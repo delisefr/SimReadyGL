@@ -6,7 +6,7 @@ export class AssetBrowser {
     this.app = app;
     this.items = [];
     this.categories = [];
-    this.activeCategory = 'All';
+    this.activeCategory = 'HuggingFace';
     this.searchQuery = '';
     this.isOpen = false;
     this.indexLoaded = false;
