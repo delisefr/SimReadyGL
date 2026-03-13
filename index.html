@@ -25,6 +25,25 @@
         <div class="toolbar-separator"></div>
         <button id="btn-reset-camera" class="toolbar-btn" title="Reset Camera (F)">Reset</button>
         <button id="btn-wireframe" class="toolbar-btn" title="Toggle Wireframe (Z)">Wire</button>
+        <div class="toolbar-separator"></div>
+        <select id="physics-engine-select" class="toolbar-select" title="Physics Engine">
+          <option value="cannon-es">cannon-es</option>
+          <option value="PhysX">PhysX</option>
+          <option value="Newton">Newton</option>
+        </select>
+        <span id="physics-engine-status" class="toolbar-status hidden"></span>
+        <button id="btn-physics-play" class="toolbar-btn" title="Start Physics Simulation">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <polygon points="6,4 20,12 6,20"/>
+          </svg>
+          Play
+        </button>
+        <button id="btn-physics-stop" class="toolbar-btn hidden" title="Stop & Reset Physics">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <rect x="5" y="5" width="14" height="14" rx="1"/>
+          </svg>
+          Stop
+        </button>
       </div>
       <div class="toolbar-center">
         <span id="asset-name">SimReady GL</span>
@@ -83,6 +102,7 @@
     <div id="controls-help">
       <div><kbd>LMB</kbd> Orbit / Look &middot; <kbd>RMB</kbd> Pan &middot; <kbd>Scroll</kbd> Zoom</div>
       <div><kbd>WASD</kbd> Move &middot; <kbd>Space</kbd> Up &middot; <kbd>Shift</kbd> Fast &middot; <kbd>F</kbd> Focus</div>
+      <div id="physics-help" class="hidden"><kbd>Shift+LMB</kbd> Grab object (during physics)</div>
     </div>
 
     <!-- Texture loading progress (viewport bottom) -->

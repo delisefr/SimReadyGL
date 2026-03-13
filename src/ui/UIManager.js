@@ -98,6 +98,66 @@ export class UIManager {
         document.documentElement.requestFullscreen();
       }
     });
+
+    // Physics
+    const btnPhysicsPlay = document.getElementById('btn-physics-play');
+    const btnPhysicsStop = document.getElementById('btn-physics-stop');
+    const physicsHelp = document.getElementById('physics-help');
+    const engineSelect = document.getElementById('physics-engine-select');
+    const engineStatus = document.getElementById('physics-engine-status');
+
+    // Wire up engine progress reporting
+    app.physics.onEngineProgress = (status, progress) => {
+      if (progress < 1) {
+        engineStatus.textContent = status;
+        engineStatus.classList.remove('hidden');
+      } else {
+        engineStatus.textContent = status;
+        // Fade out after a moment
+        setTimeout(() => engineStatus.classList.add('hidden'), 1200);
+      }
+    };
+
+    btnPhysicsPlay.addEventListener('click', () => {
+      app.physics.play();
+      btnPhysicsPlay.classList.add('hidden');
+      btnPhysicsStop.classList.remove('hidden');
+      btnPhysicsStop.classList.add('active');
+      engineSelect.disabled = true;
+      if (physicsHelp) physicsHelp.classList.remove('hidden');
+    });
+
+    btnPhysicsStop.addEventListener('click', () => {
+      app.physics.stop();
+      btnPhysicsStop.classList.add('hidden');
+      btnPhysicsStop.classList.remove('active');
+      btnPhysicsPlay.classList.remove('hidden');
+      engineSelect.disabled = false;
+      if (physicsHelp) physicsHelp.classList.add('hidden');
+    });
+
+    engineSelect.addEventListener('change', async () => {
+      const name = engineSelect.value;
+      engineSelect.disabled = true;
+      btnPhysicsPlay.disabled = true;
+      engineStatus.classList.remove('hidden');
+      engineStatus.textContent = `Loading ${name}...`;
+      try {
+        await app.physics.setEngine(name);
+        btnPhysicsPlay.disabled = false;
+      } catch (err) {
+        console.error('Failed to load physics engine:', err);
+        this.showError(err.message);
+        engineStatus.classList.add('hidden');
+        // Revert to previous engine
+        engineSelect.value = app.physics.engineName;
+        btnPhysicsPlay.disabled = false;
+      } finally {
+        if (!app.physics.running) {
+          engineSelect.disabled = false;
+        }
+      }
+    });
   }
 
   bindKeyboard() {

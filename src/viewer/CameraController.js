@@ -8,6 +8,7 @@ export class CameraController {
     this.camera = camera;
     this.canvas = canvas;
     this.sceneManager = sceneManager;
+    this.physicsManager = null; // Set externally to check grab state
 
     // Mode
     this.mode = ORBIT;
@@ -109,8 +110,8 @@ export class CameraController {
     }
   }
 
-  update() {
-    const dt = this.clock.getDelta();
+  update(dt) {
+    if (dt === undefined) dt = this.clock.getDelta();
 
     if (this.mode === ORBIT) {
       this._updateOrbit(dt);
@@ -200,6 +201,10 @@ export class CameraController {
   }
 
   _onPointerDown(e) {
+    // Don't start camera control if physics grab is active
+    if (this.physicsManager && this.physicsManager.running && e.shiftKey && e.button === 0) {
+      return;
+    }
     this.isPointerDown = true;
     this.pointerButton = e.button;
     this.lastPointer.set(e.clientX, e.clientY);
@@ -210,6 +215,9 @@ export class CameraController {
   }
 
   _onPointerMove(e) {
+    // Don't move camera if physics grab is active
+    if (this.physicsManager && this.physicsManager.isGrabActive()) return;
+
     const dx = e.clientX - this.lastPointer.x;
     const dy = e.clientY - this.lastPointer.y;
 

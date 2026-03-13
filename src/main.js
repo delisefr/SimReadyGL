@@ -3,6 +3,7 @@ import JSZip from 'jszip';
 import { SceneManager } from './viewer/SceneManager.js';
 import { CameraController } from './viewer/CameraController.js';
 import { SimReadyLoader } from './viewer/SimReadyLoader.js';
+import { PhysicsManager } from './viewer/PhysicsManager.js';
 import { AssetBrowser } from './ui/AssetBrowser.js';
 import { UIManager } from './ui/UIManager.js';
 
@@ -14,6 +15,8 @@ class App {
     this.scene = new SceneManager(this.canvas);
     this.camera = new CameraController(this.scene.camera, this.canvas, this.scene);
     this.loader = new SimReadyLoader();
+    this.physics = new PhysicsManager(this.scene, this.scene.camera, this.canvas);
+    this.camera.physicsManager = this.physics;
     this.browser = new AssetBrowser(this);
     this.ui = new UIManager(this);
     this.currentAssetPath = null;
@@ -72,6 +75,9 @@ class App {
       const buffer = await file.arrayBuffer();
       const group = this.loader.parseBuffer(buffer, file.name);
       this.scene.setModel(group, file.name);
+      this.physics.stop();
+      this.physics.clearBodies();
+      this._resetPhysicsUI();
       this.camera.focusOnModel();
       this.ui.setAssetName(file.name);
       this.ui.updateSceneInfo(this.scene);
@@ -104,6 +110,9 @@ class App {
         this.ui.updateProgress(progress.percent, progress.detail);
       });
       this.scene.setModel(group, assetPath);
+      this.physics.stop();
+      this.physics.clearBodies();
+      this._resetPhysicsUI();
       this.camera.focusOnModel();
       this.ui.setAssetName(assetPath.split('/').pop());
       this.ui.updateSceneInfo(this.scene);
@@ -220,9 +229,24 @@ class App {
     }
   }
 
+  _resetPhysicsUI() {
+    const btnPlay = document.getElementById('btn-physics-play');
+    const btnStop = document.getElementById('btn-physics-stop');
+    const engineSelect = document.getElementById('physics-engine-select');
+    const physicsHelp = document.getElementById('physics-help');
+    btnPlay.classList.remove('hidden');
+    btnPlay.disabled = false;
+    btnStop.classList.add('hidden');
+    btnStop.classList.remove('active');
+    engineSelect.disabled = false;
+    if (physicsHelp) physicsHelp.classList.add('hidden');
+  }
+
   animate() {
     requestAnimationFrame(() => this.animate());
-    this.camera.update();
+    const dt = this.camera.clock.getDelta();
+    this.camera.update(dt);
+    this.physics.update(dt);
     this.scene.render();
     this.ui.updateFPS();
   }

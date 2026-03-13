@@ -121,6 +121,42 @@ html, body {
   margin: 0 2px;
 }
 
+.toolbar-select {
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-dim);
+  font-size: 12px;
+  font-family: var(--sans);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.toolbar-select:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.toolbar-select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toolbar-status {
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+  animation: pulse-status 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-status {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 /* Loading overlay */
 #loading-overlay {
   position: absolute;
