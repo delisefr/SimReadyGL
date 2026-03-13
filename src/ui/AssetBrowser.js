@@ -173,9 +173,6 @@ export class AssetBrowser {
       return true;
     });
 
-    const maxShow = 200;
-    const showing = filtered.slice(0, maxShow);
-
     this.grid.innerHTML = '';
 
     if (filtered.length === 0) {
@@ -185,7 +182,7 @@ export class AssetBrowser {
 
     const fragment = document.createDocumentFragment();
 
-    for (const item of showing) {
+    for (const item of filtered) {
       const card = document.createElement('div');
       card.className = 'asset-card';
       card.title = `${item.path}\n${item.sizeFormatted}`;
@@ -234,13 +231,6 @@ export class AssetBrowser {
     }
 
     this.grid.appendChild(fragment);
-
-    if (filtered.length > maxShow) {
-      const more = document.createElement('div');
-      more.style.cssText = 'grid-column:1/-1;text-align:center;padding:12px;color:var(--text-dim);font-size:12px';
-      more.textContent = `Showing ${maxShow} of ${filtered.length} assets. Refine your search.`;
-      this.grid.appendChild(more);
-    }
   }
 
   _escapeHtml(str) {
