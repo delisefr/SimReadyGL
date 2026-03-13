@@ -16,6 +16,7 @@ export class OmniPBRMaterialMapper {
     this.textureLoaded = 0;
     this.textureFailed = 0;
     this.onTextureProgress = null; // callback(loaded, total, failed)
+    this._udimProbeCache = new Map();
   }
 
   resetTextureProgress() {
@@ -74,7 +75,7 @@ export class OmniPBRMaterialMapper {
    * Create a Three.js material from texture paths and optional MDL props.
    * texDir is the S3 directory to resolve relative texture paths against.
    */
-  createMaterial(texturePaths, mdlProps, texDir) {
+  createMaterial(texturePaths, mdlProps, texDir, udimInfo = null) {
     const mat = new THREE.MeshPhysicalMaterial({ side: THREE.DoubleSide });
 
     if (mdlProps) {
@@ -102,24 +103,32 @@ export class OmniPBRMaterialMapper {
     const uvScale = mdlProps && Array.isArray(mdlProps.texture_scale) ? mdlProps.texture_scale : [1, 1];
     const uvOffset = mdlProps && Array.isArray(mdlProps.texture_translate) ? mdlProps.texture_translate : [0, 0];
 
+    // Helper: routes to UDIM atlas loader when needed
+    const loadTex = (texPath, colorSpace) => {
+      if (udimInfo && texPath && texPath.includes('<UDIM>')) {
+        return this._loadUDIMAtlas(texPath, texDir, colorSpace, uvScale, uvOffset, udimInfo.tiles);
+      }
+      return this._loadTex(texPath, texDir, colorSpace, uvScale, uvOffset);
+    };
+
     // Load diffuse/albedo texture
     const diffuseTex = texturePaths.diffuse_texture || texturePaths.diffuse_color_texture;
     if (diffuseTex) {
-      this._loadTex(diffuseTex, texDir, THREE.SRGBColorSpace, uvScale, uvOffset)
+      loadTex(diffuseTex, THREE.SRGBColorSpace)
         .then(t => { if (t) { mat.map = t; mat.needsUpdate = true; } });
     }
 
     // Normal map
     const normalTex = texturePaths.normalmap_texture;
     if (normalTex) {
-      this._loadTex(normalTex, texDir, THREE.NoColorSpace, uvScale, uvOffset)
+      loadTex(normalTex, THREE.NoColorSpace)
         .then(t => { if (t) { mat.normalMap = t; mat.needsUpdate = true; } });
     }
 
     // Roughness map (standalone)
     const roughTex = texturePaths.reflectionroughness_texture || texturePaths.roughness_texture;
     if (roughTex) {
-      this._loadTex(roughTex, texDir, THREE.NoColorSpace, uvScale, uvOffset)
+      loadTex(roughTex, THREE.NoColorSpace)
         .then(t => {
           if (t) {
             mat.roughnessMap = t;
@@ -132,7 +141,7 @@ export class OmniPBRMaterialMapper {
     // Metallic map (standalone)
     const metalTex = texturePaths.metallic_texture;
     if (metalTex) {
-      this._loadTex(metalTex, texDir, THREE.NoColorSpace, uvScale, uvOffset)
+      loadTex(metalTex, THREE.NoColorSpace)
         .then(t => {
           if (t) {
             mat.metalnessMap = t;
@@ -146,7 +155,7 @@ export class OmniPBRMaterialMapper {
     const ormTex = texturePaths.ORM_texture;
     const ormEnabled = mdlProps ? mdlProps.enable_ORM_texture : !!ormTex;
     if (ormEnabled && ormTex) {
-      this._loadTex(ormTex, texDir, THREE.NoColorSpace, uvScale, uvOffset)
+      loadTex(ormTex, THREE.NoColorSpace)
         .then(t => {
           if (t) {
             mat.aoMap = t;
@@ -163,7 +172,7 @@ export class OmniPBRMaterialMapper {
     // Emissive
     const emissiveTex = texturePaths.emissive_color_texture;
     if (emissiveTex) {
-      this._loadTex(emissiveTex, texDir, THREE.SRGBColorSpace, uvScale, uvOffset)
+      loadTex(emissiveTex, THREE.SRGBColorSpace)
         .then(t => { if (t) { mat.emissiveMap = t; mat.needsUpdate = true; } });
     }
 
@@ -270,9 +279,24 @@ export class OmniPBRMaterialMapper {
         continue; // No texture data at all
       }
 
+      // Probe UDIM tiles if any texture uses UDIM tokens
+      let udimInfo = null;
+      const firstUDIMTex = Object.values(texturePaths).find(
+        p => typeof p === 'string' && p.includes('<UDIM>')
+      );
+      if (firstUDIMTex) {
+        const tiles = await this._probeUDIMTiles(firstUDIMTex, texDir);
+        if (tiles.length > 1) {
+          const cols = Math.max(...tiles.map(t => t.col)) + 1;
+          udimInfo = { cols, tiles };
+          console.log(`UDIM detected for ${matPath}: ${tiles.length} tiles, ${cols} columns`);
+        }
+      }
+
       console.log(`Creating material for ${matPath}:`, Object.keys(texturePaths));
-      const material = this.createMaterial(texturePaths, mdlProps, texDir);
+      const material = this.createMaterial(texturePaths, mdlProps, texDir, udimInfo);
       material.name = matPath.split('/').pop();
+      if (udimInfo) material.userData.udimCols = udimInfo.cols;
       createdMaterials.set(matPath, material);
     }
 
@@ -335,6 +359,10 @@ export class OmniPBRMaterialMapper {
 
       if (material) {
         child.material = material;
+        // Remap UVs for UDIM atlas textures
+        if (material.userData && material.userData.udimCols > 1) {
+          this._remapUDIMUVs(child, material.userData.udimCols);
+        }
         applied++;
       } else {
         unmatched.push(child.name);
@@ -376,6 +404,139 @@ export class OmniPBRMaterialMapper {
     }
 
     return null;
+  }
+
+  /**
+   * Probe which UDIM tiles exist for a texture template path.
+   * Sends parallel HEAD requests for tiles 1001-1009, caches results.
+   */
+  async _probeUDIMTiles(templatePath, baseDir) {
+    let resolved = templatePath.replace(/\\/g, '/');
+    if (resolved.startsWith('./')) {
+      resolved = baseDir + '/' + resolved.substring(2);
+    } else if (!resolved.startsWith('http') && !resolved.startsWith('/')) {
+      resolved = baseDir + '/' + resolved;
+    }
+
+    const cacheKey = resolved;
+    if (this._udimProbeCache.has(cacheKey)) {
+      return this._udimProbeCache.get(cacheKey);
+    }
+
+    const probes = [];
+    for (let t = 1001; t <= 1009; t++) {
+      const url = `${S3_BASE}/${resolved.replace(/<UDIM>/g, String(t))}`;
+      probes.push(
+        fetch(url, { method: 'HEAD' })
+          .then(r => r.ok ? { tile: t, col: t - 1001 } : null)
+          .catch(() => null)
+      );
+    }
+
+    const results = await Promise.all(probes);
+    const tiles = results.filter(r => r !== null);
+    this._udimProbeCache.set(cacheKey, tiles);
+    return tiles;
+  }
+
+  /**
+   * Load all UDIM tiles and combine into a single atlas texture.
+   * The atlas is arranged horizontally: tile 1001 at left, 1002 next, etc.
+   * Mesh UVs must be remapped: U_new = U / cols.
+   */
+  async _loadUDIMAtlas(templatePath, baseDir, colorSpace, uvScale, uvOffset, tiles) {
+    let resolved = templatePath.replace(/\\/g, '/');
+    if (resolved.startsWith('./')) {
+      resolved = baseDir + '/' + resolved.substring(2);
+    } else if (resolved.startsWith('../')) {
+      const baseParts = baseDir.split('/');
+      const refParts = resolved.split('/');
+      while (refParts[0] === '..') { refParts.shift(); baseParts.pop(); }
+      resolved = baseParts.join('/') + '/' + refParts.join('/');
+    } else if (!resolved.startsWith('http') && !resolved.startsWith('/')) {
+      resolved = baseDir + '/' + resolved;
+    }
+
+    const cols = Math.max(...tiles.map(t => t.col)) + 1;
+    const cacheKey = `udim:${resolved}:${colorSpace}`;
+
+    if (this.textureCache.has(cacheKey)) {
+      return this.textureCache.get(cacheKey).clone();
+    }
+
+    this.textureTotal++;
+    this._reportProgress();
+
+    // Load all tile images in parallel
+    const imagePromises = tiles.map(t => {
+      const url = `${S3_BASE}/${resolved.replace(/<UDIM>/g, String(t.tile))}`;
+      return fetch(url)
+        .then(r => r.ok ? r.blob() : null)
+        .then(b => b ? createImageBitmap(b) : null)
+        .then(img => ({ col: t.col, img }))
+        .catch(() => ({ col: t.col, img: null }));
+    });
+
+    const images = await Promise.all(imagePromises);
+    const validImages = images.filter(i => i.img);
+
+    if (validImages.length === 0) {
+      this.textureFailed++;
+      this.textureLoaded++;
+      this._reportProgress();
+      return null;
+    }
+
+    // Create atlas canvas (tiles arranged horizontally)
+    const tileW = validImages[0].img.width;
+    const tileH = validImages[0].img.height;
+    const canvas = document.createElement('canvas');
+    canvas.width = tileW * cols;
+    canvas.height = tileH;
+    const ctx = canvas.getContext('2d');
+
+    for (const { col, img } of validImages) {
+      ctx.drawImage(img, col * tileW, 0);
+    }
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = colorSpace;
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(uvScale[0] || 1, uvScale[1] || 1);
+    texture.offset.set(uvOffset[0] || 0, uvOffset[1] || 0);
+    texture.flipY = true;
+    texture.generateMipmaps = true;
+    texture.minFilter = THREE.LinearMipmapLinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    texture.needsUpdate = true;
+
+    this.textureCache.set(cacheKey, texture);
+    this.textureLoaded++;
+    this._reportProgress();
+
+    return texture;
+  }
+
+  /**
+   * Remap mesh UVs for UDIM atlas: divide U by the number of atlas columns.
+   */
+  _remapUDIMUVs(mesh, cols) {
+    const geometry = mesh.geometry;
+    if (!geometry) return;
+    const uvAttr = geometry.getAttribute('uv');
+    if (!uvAttr) return;
+    // Skip if already remapped
+    if (geometry.userData && geometry.userData.udimRemapped) return;
+
+    const arr = uvAttr.array;
+    for (let i = 0; i < arr.length; i += 2) {
+      arr[i] = arr[i] / cols;
+    }
+    uvAttr.needsUpdate = true;
+
+    if (!geometry.userData) geometry.userData = {};
+    geometry.userData.udimRemapped = true;
   }
 
   async _loadTex(texPath, baseDir, colorSpace, uvScale, uvOffset) {
