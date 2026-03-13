@@ -6,10 +6,8 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-if not exist node_modules (
-    echo Installing dependencies...
-    npm install
-)
+echo Installing dependencies...
+npm install
 
 echo Starting SimReadyGL dev server...
 npx vite --open

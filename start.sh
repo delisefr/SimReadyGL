@@ -4,7 +4,8 @@ if ! command -v node &> /dev/null; then
     exit 1
 fi
 
-[ ! -d node_modules ] && npm install
+echo "Installing dependencies..."
+npm install
 
 echo "Starting SimReadyGL dev server..."
 npx vite --open
