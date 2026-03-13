@@ -1,9 +1,12 @@
 import './style.css';
+import JSZip from 'jszip';
 import { SceneManager } from './viewer/SceneManager.js';
 import { CameraController } from './viewer/CameraController.js';
 import { SimReadyLoader } from './viewer/SimReadyLoader.js';
 import { AssetBrowser } from './ui/AssetBrowser.js';
 import { UIManager } from './ui/UIManager.js';
+
+const S3_BASE = 'https://simready.s3.us-east-1.amazonaws.com';
 
 class App {
   constructor() {
@@ -13,6 +16,7 @@ class App {
     this.loader = new SimReadyLoader();
     this.browser = new AssetBrowser(this);
     this.ui = new UIManager(this);
+    this.currentAssetPath = null;
 
     this.setupDragDrop();
     this.setupURLLoading();
@@ -80,6 +84,7 @@ class App {
   }
 
   async loadSimReadyAsset(assetPath) {
+    this.currentAssetPath = assetPath;
     this.ui.showLoading(`Loading ${assetPath.split('/').pop()}...`);
     this.ui.hideTextureProgress();
 
@@ -105,6 +110,111 @@ class App {
     } catch (err) {
       console.error('Failed to load asset:', err);
       this.ui.showError(`Failed to load: ${err.message}`);
+    } finally {
+      this.ui.hideLoading();
+    }
+  }
+
+  async downloadCurrentAsset() {
+    if (!this.currentAssetPath) return;
+
+    const assetDir = this.loader.dirPath(this.currentAssetPath);
+    const assetName = assetDir.split('/').pop();
+
+    this.ui.showLoading('Preparing download...');
+
+    try {
+      await this.loader.getIndex();
+
+      // Collect all directories needed (asset dir + referenced component dirs)
+      const dirs = new Set([assetDir]);
+      const { usdPaths } = await this.loader.collectAllReferences(this.currentAssetPath);
+      for (const p of usdPaths) {
+        const d = this.loader.dirPath(p);
+        if (d) dirs.add(d);
+      }
+
+      // Find common path prefix for proper zip structure
+      const allDirs = [...dirs];
+      let base = allDirs[0];
+      for (const d of allDirs) {
+        while (base && !d.startsWith(base)) {
+          base = base.substring(0, base.lastIndexOf('/'));
+        }
+      }
+
+      // Gather all files from index that belong to these directories
+      const files = [];
+      if (this.loader.indexData) {
+        for (const item of this.loader.indexData.items) {
+          let included = false;
+          for (const d of dirs) {
+            if (item.path.startsWith(d + '/')) { included = true; break; }
+          }
+          if (!included) continue;
+          if (item.path.includes('.thumbs/')) continue;
+          if (item.path.includes('_physics.usd')) continue;
+          files.push(item);
+        }
+      }
+
+      if (files.length === 0) {
+        this.ui.showError('No files found to download');
+        return;
+      }
+
+      const zip = new JSZip();
+      const folder = zip.folder(assetName);
+      const total = files.length;
+      const concurrency = 8;
+      let downloaded = 0;
+
+      for (let i = 0; i < files.length; i += concurrency) {
+        const batch = files.slice(i, i + concurrency);
+        const results = await Promise.allSettled(
+          batch.map(async (item) => {
+            const url = `${S3_BASE}/${item.path}`;
+            let data;
+            if (this.loader.fetchCache.has(url)) {
+              data = this.loader.fetchCache.get(url);
+            } else {
+              const resp = await fetch(url);
+              if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+              data = await resp.arrayBuffer();
+            }
+            // Relative path preserving directory structure for valid USD references
+            const relPath = base ? item.path.substring(base.length + 1) : item.path;
+            return { relPath, data };
+          })
+        );
+
+        for (const r of results) {
+          if (r.status === 'fulfilled' && r.value) {
+            folder.file(r.value.relPath, r.value.data);
+          }
+        }
+
+        downloaded += batch.length;
+        this.ui.updateProgress(
+          Math.round(Math.min(downloaded / total, 1) * 90),
+          `Downloading ${Math.min(downloaded, total)}/${total} files...`
+        );
+      }
+
+      this.ui.updateProgress(95, 'Creating ZIP...');
+      const blob = await zip.generateAsync({ type: 'blob' });
+
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${assetName}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+
+    } catch (err) {
+      console.error('Download failed:', err);
+      this.ui.showError(`Download failed: ${err.message}`);
     } finally {
       this.ui.hideLoading();
     }

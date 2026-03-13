@@ -85,6 +85,11 @@ export class UIManager {
       btnStats.classList.toggle('active', !showing);
     });
 
+    // Download
+    document.getElementById('btn-download').addEventListener('click', () => {
+      app.downloadCurrentAsset();
+    });
+
     // Fullscreen
     document.getElementById('btn-fullscreen').addEventListener('click', () => {
       if (document.fullscreenElement) {
