@@ -7,7 +7,13 @@ if %errorlevel% neq 0 (
 )
 
 echo Installing dependencies...
-npm install
+call npm install
+if %errorlevel% neq 0 (
+    echo npm install failed. Check your Node.js installation.
+    pause
+    exit /b 1
+)
 
 echo Starting SimReadyGL dev server...
 npx vite --open
+pause
