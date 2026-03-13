@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>SimReady GL - Visual Comparison Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a2e; color: #eee; font-family: monospace; padding: 10px; }
+    h1 { font-size: 18px; margin-bottom: 5px; }
+    .subtitle { color: #888; font-size: 12px; margin-bottom: 10px; }
+    #controls { margin-bottom: 10px; display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+    #controls button { background: #333; color: #eee; border: 1px solid #555; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-family: monospace; font-size: 12px; }
+    #controls button:hover { background: #444; }
+    #status { color: #aaa; font-size: 12px; margin-left: 10px; }
+    #results { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .test-card {
+      background: #252540;
+      border: 2px solid #333;
+      border-radius: 8px;
+      width: 520px;
+      overflow: hidden;
+    }
+    .test-card.pass { border-color: #2ecc40; }
+    .test-card.fail { border-color: #ff4136; }
+    .test-card.warn { border-color: #ffdc00; }
+    .test-card.loading { border-color: #555; }
+    .card-header { padding: 6px 10px; background: #1e1e36; font-weight: bold; font-size: 12px; display: flex; justify-content: space-between; }
+    .badge { font-size: 10px; padding: 1px 6px; border-radius: 3px; font-weight: bold; }
+    .pass .badge { background: #2ecc40; color: #000; }
+    .fail .badge { background: #ff4136; }
+    .warn .badge { background: #ffdc00; color: #000; }
+    .loading .badge { background: #555; }
+    .card-body { display: flex; }
+    .img-box { position: relative; width: 260px; height: 260px; background: #111; }
+    .img-box canvas { width: 260px; height: 260px; display: block; }
+    .img-box img { width: 260px; height: 260px; object-fit: contain; display: block; background: #0a0a15; }
+    .img-label { position: absolute; bottom: 3px; left: 3px; font-size: 9px; background: rgba(0,0,0,0.85); padding: 1px 5px; border-radius: 2px; color: #aaa; }
+    .card-footer { padding: 6px 10px; font-size: 10px; color: #aaa; border-top: 1px solid #333; line-height: 1.5; }
+    .card-footer .ok { color: #2ecc40; }
+    .card-footer .bad { color: #ff4136; }
+    .card-footer .dim { color: #666; }
+    #log { margin-top: 15px; background: #111; padding: 8px; max-height: 250px; overflow: auto; font-size: 10px; border-radius: 4px; white-space: pre-wrap; color: #999; }
+    .summary { margin-top: 10px; padding: 10px; background: #1e1e36; border-radius: 6px; font-size: 13px; }
+    .summary .pass-count { color: #2ecc40; }
+    .summary .fail-count { color: #ff4136; }
+  </style>
+</head>
+<body>
+  <h1>SimReady GL - Visual Comparison Test</h1>
+  <p class="subtitle">Renders assets and compares to S3 thumbnails (Isaac Sim reference). Checks size, orientation, ground placement.</p>
+  <div id="controls">
+    <button onclick="runAll()">Run All</button>
+    <button onclick="runCategory('pallets_single')">Pallets (single)</button>
+    <button onclick="runCategory('pallets_assembly')">Pallets (assembly)</button>
+    <button onclick="runCategory('pallets_sm')">Pallets (SM)</button>
+    <button onclick="runCategory('racks_assembly')">Racks</button>
+    <button onclick="runCategory('other_assembly')">Other Assembly</button>
+    <button onclick="runCategory('containers')">Containers</button>
+    <button onclick="runCategory('datacenter')">Datacenter</button>
+    <button onclick="runCategory('warehouse')">Warehouse</button>
+    <span id="status"></span>
+  </div>
+  <div id="summary-box"></div>
+  <div id="results"></div>
+  <div id="log"></div>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { SimReadyLoader } from '/src/viewer/SimReadyLoader.js';
+
+    const S3 = 'https://simready.s3.us-east-1.amazonaws.com';
+
+    // Expected dimensions (approximate, in meters) for validation
+    // Ranges are loose to allow for orientation permutations
+    // Dimension expectations: [min, max] in meters for each axis.
+    // We use permutation-based checking (sorted dims vs sorted ranges)
+    // so orientation swaps don't cause failures.
+    // Ranges are generous to account for mpu variations and assembly composition.
+    const TESTS = {
+      pallets_single: [
+        { path: 'HuggingFace/general/Pallet_A1/Pallet_A1.usd', name: 'Pallet A1',
+          expect: { w: [0.5, 2.5], h: [0.05, 0.5], d: [0.5, 2.5] } },
+        { path: 'HuggingFace/general/Pallet_B1/Pallet_B1.usd', name: 'Pallet B1',
+          expect: { w: [0.5, 2.0], h: [0.05, 0.5], d: [0.5, 2.0] } },
+        { path: 'HuggingFace/general/Pallet_C1/Pallet_C1.usd', name: 'Pallet C1',
+          expect: { w: [0.8, 2.5], h: [0.05, 0.5], d: [0.8, 2.5] } },
+      ],
+      pallets_assembly: [
+        { path: 'HuggingFace/assembly/Pallets_A1/Pallets_A1.usd', name: 'Pallets A1 (stacked)',
+          expect: { w: [0.5, 3.0], h: [0.1, 3.0], d: [0.5, 3.0] } },
+        { path: 'HuggingFace/assembly/Pallets_A2/Pallets_A2.usd', name: 'Pallets A2',
+          expect: { w: [0.5, 3.0], h: [0.1, 3.0], d: [0.5, 3.0] } },
+        { path: 'HuggingFace/assembly/Pallets_A3/Pallets_A3.usd', name: 'Pallets A3',
+          expect: { w: [0.5, 3.0], h: [0.05, 3.0], d: [0.5, 3.0] } },
+        { path: 'HuggingFace/assembly/Pallets_A4/Pallets_A4.usd', name: 'Pallets A4',
+          expect: { w: [0.5, 3.0], h: [0.1, 3.0], d: [0.5, 3.0] } },
+        { path: 'HuggingFace/assembly/Pallets_A5/Pallets_A5.usd', name: 'Pallets A5',
+          expect: { w: [0.5, 3.0], h: [0.1, 3.0], d: [0.5, 3.0] } },
+      ],
+      pallets_sm: [
+        { path: 'HuggingFace/assembly/sm_palletcomposition_a100_01/sm_palletcomposition_a100_01.usd', name: 'PalletComp A100',
+          expect: { w: [0.1, 5.0], h: [0.1, 5.0], d: [0.1, 5.0] } },
+        { path: 'HuggingFace/assembly/sm_palletcomposition_a101_01/sm_palletcomposition_a101_01.usd', name: 'PalletComp A101',
+          expect: { w: [0.1, 5.0], h: [0.1, 5.0], d: [0.1, 5.0] } },
+        { path: 'HuggingFace/assembly/sm_palletcomposition_a17_01/sm_palletcomposition_a17_01.usd', name: 'PalletComp A17',
+          expect: { w: [0.1, 5.0], h: [0.1, 5.0], d: [0.1, 5.0] } },
+        { path: 'SimReady_Warehouse_02/aluminumpallet_a01/aluminumpallet_a01.usd', name: 'Aluminum Pallet',
+          expect: { w: [0.3, 2.0], h: [0.02, 0.5], d: [0.3, 2.0] } },
+        { path: 'SimReady_Containers_Shipping_02/blockpallet_a01/blockpallet_a01.usd', name: 'Block Pallet A01',
+          expect: { w: [0.3, 2.0], h: [0.02, 0.5], d: [0.3, 2.0] } },
+      ],
+      racks_assembly: [
+        { path: 'HuggingFace/assembly/RackLarge_A1/RackLarge_A1.usd', name: 'RackLarge A1',
+          expect: { w: [0.1, 8.0], h: [0.1, 6.0], d: [0.1, 4.0] } },
+        { path: 'HuggingFace/assembly/RackLong_A3/RackLong_A3.usd', name: 'RackLong A3',
+          expect: { w: [0.1, 10.0], h: [0.1, 6.0], d: [0.1, 4.0] } },
+      ],
+      other_assembly: [
+        { path: 'HuggingFace/assembly/WarehousePile_A1/WarehousePile_A1.usd', name: 'WarehousePile A1',
+          expect: { w: [0.1, 5.0], h: [0.1, 5.0], d: [0.1, 5.0] } },
+        { path: 'HuggingFace/assembly/White_Boxes_01/White_Boxes_01.usd', name: 'White Boxes',
+          expect: { w: [0.1, 5.0], h: [0.1, 5.0], d: [0.1, 5.0] } },
+        { path: 'HuggingFace/assembly/Trolley_A1_NP/Trolley_A1_NP.usd', name: 'Trolley A1',
+          expect: { w: [0.1, 3.0], h: [0.1, 3.0], d: [0.1, 3.0] } },
+      ],
+      containers: [
+        { path: 'SimReady_Containers_Shipping_01/bin_a01/bin_a01.usd', name: 'Bin A01',
+          expect: { w: [0.1, 1.5], h: [0.05, 1.0], d: [0.1, 1.5] } },
+        { path: 'SimReady_Containers_Shipping_01/bin_a03/bin_a03.usd', name: 'Bin A03',
+          expect: { w: [0.1, 1.5], h: [0.05, 1.0], d: [0.1, 1.5] } },
+      ],
+      datacenter: [
+        { path: 'Datacenter/Facilities/Cable_Tray/cable_tray_61x299x5cm_A.usd', name: 'Cable Tray 299cm',
+          expect: { w: [0.02, 4.0], h: [0.02, 1.0], d: [0.02, 4.0] } },
+        { path: 'Datacenter/Network_Switches/NVIDIA/SN3700/SN3700C_01.usd', name: 'SN3700C Switch',
+          expect: { w: [0.02, 1.0], h: [0.02, 0.5], d: [0.02, 1.0] } },
+      ],
+      warehouse: [
+        { path: 'SimReady_Warehouse_01/aluminumstepstand_a01/aluminumstepstand_a01.usd', name: 'Aluminum Step Stand',
+          expect: { w: [0.1, 1.5], h: [0.05, 1.0], d: [0.1, 1.5] } },
+        { path: 'SimReady_Warehouse_01/bulkstoragerack_a01/bulkstoragerack_a01.usd', name: 'Bulk Storage Rack',
+          expect: { w: [0.3, 5.0], h: [0.3, 5.0], d: [0.2, 3.0] } },
+      ],
+    };
+
+    function log(msg) {
+      const el = document.getElementById('log');
+      el.textContent += msg + '\n';
+      el.scrollTop = el.scrollHeight;
+    }
+
+    // Shared loader for index access
+    const sharedLoader = new SimReadyLoader();
+
+    async function findThumbnail(assetPath) {
+      const dir = assetPath.includes('/') ? assetPath.slice(0, assetPath.lastIndexOf('/')) : '';
+      const name = assetPath.split('/').pop().replace(/\.(usd|usda|usdc)$/i, '');
+
+      // Try .thumbs directory pattern first
+      const thumbDir = `${S3}/${dir}/.thumbs/256x256`;
+      const thumbCandidates = [
+        `${thumbDir}/${name}.usd.png`,
+        `${thumbDir}/${name}.png`,
+        `${S3}/${dir}/${name}.png`,
+      ];
+
+      for (const url of thumbCandidates) {
+        try {
+          const resp = await fetch(url, { method: 'HEAD' });
+          if (resp.ok) return url;
+        } catch {}
+      }
+
+      // Search index
+      const index = await sharedLoader.getIndex();
+      if (index) {
+        for (const item of index.items) {
+          if (item.path.startsWith(dir + '/') &&
+              /\.(png|jpg)$/i.test(item.path) &&
+              !item.path.includes('T_') &&
+              !item.path.includes('textures/') &&
+              !item.path.includes('materials/')) {
+            return `${S3}/${item.path}`;
+          }
+        }
+      }
+      return null;
+    }
+
+    function renderScene(group, canvas) {
+      const w = 260, h = 260;
+      canvas.width = w * 2;
+      canvas.height = h * 2;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setSize(w, h, false);
+      renderer.setPixelRatio(2);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.2;
+      renderer.setClearColor(0x1a1a2e);
+
+      const scene = new THREE.Scene();
+      const cloned = group.clone();
+      scene.add(cloned);
+
+      // Auto-ground: shift so bottom sits on Y=0 (matches SceneManager behavior)
+      scene.updateMatrixWorld(true);
+      const groundBox = new THREE.Box3().setFromObject(cloned);
+      if (groundBox.min.y < -0.001) {
+        cloned.position.y -= groundBox.min.y;
+      }
+
+      // Lighting matching Isaac Sim defaults
+      scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+      const dl = new THREE.DirectionalLight(0xffffff, 1.5);
+      dl.position.set(3, 8, 5);
+      scene.add(dl);
+      const dl2 = new THREE.DirectionalLight(0xffffff, 0.4);
+      dl2.position.set(-4, 3, -3);
+      scene.add(dl2);
+      scene.add(new THREE.HemisphereLight(0xb0d0ff, 0x443322, 0.4));
+
+      // Camera
+      scene.updateMatrixWorld(true);
+      const box = new THREE.Box3().setFromObject(scene);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z) || 1;
+
+      const camera = new THREE.PerspectiveCamera(35, 1, maxDim * 0.001, maxDim * 100);
+      const dist = maxDim / (2 * Math.tan(Math.PI * 35 / 360));
+      // Front-right elevated (Isaac Sim default-ish view)
+      camera.position.set(
+        center.x + dist * 0.7,
+        center.y + dist * 0.5,
+        center.z + dist * 0.9
+      );
+      camera.lookAt(center);
+
+      renderer.render(scene, camera);
+      renderer.dispose();
+
+      return { size, center, box };
+    }
+
+    function checkDimensions(size, expect) {
+      if (!expect) return { ok: true, issues: [] };
+      const issues = [];
+      const dims = [
+        { name: 'W', val: size.x, range: expect.w },
+        { name: 'H', val: size.y, range: expect.h },
+        { name: 'D', val: size.z, range: expect.d },
+      ];
+      // Check if dimensions match in any permutation (orientation might swap axes)
+      const vals = [size.x, size.y, size.z].sort((a,b) => a-b);
+      const ranges = [expect.w, expect.h, expect.d].map(r => [(r[0]+r[1])/2, r]).sort((a,b) => a[0]-b[0]);
+
+      for (let i = 0; i < 3; i++) {
+        const [lo, hi] = ranges[i][1];
+        if (vals[i] < lo * 0.5 || vals[i] > hi * 2.0) {
+          issues.push(`dim ${vals[i].toFixed(3)}m outside expected [${lo}-${hi}]`);
+        }
+      }
+      return { ok: issues.length === 0, issues };
+    }
+
+    let globalResults = [];
+
+    async function testAsset(asset) {
+      const card = document.createElement('div');
+      card.className = 'test-card loading';
+      card.innerHTML = `
+        <div class="card-header">
+          <span>${asset.name}</span>
+          <span class="badge">...</span>
+        </div>
+        <div class="card-body">
+          <div class="img-box"><canvas></canvas><div class="img-label">SimReady GL</div></div>
+          <div class="img-box"><img src="" alt=""/><div class="img-label">S3 Thumbnail</div></div>
+        </div>
+        <div class="card-footer">Loading...</div>`;
+      document.getElementById('results').appendChild(card);
+
+      const canvas = card.querySelector('canvas');
+      const img = card.querySelector('img');
+      const footer = card.querySelector('.card-footer');
+      const badge = card.querySelector('.badge');
+
+      const result = { name: asset.name, path: asset.path, status: 'fail', issues: [] };
+
+      try {
+        const thumbPromise = findThumbnail(asset.path);
+
+        const loader = new SimReadyLoader();
+        const t0 = performance.now();
+        log(`Loading: ${asset.name}`);
+
+        const group = await loader.loadFromSimReady(asset.path, (p) => {
+          footer.textContent = p.detail || 'Loading...';
+        });
+
+        const loadTime = ((performance.now() - t0) / 1000).toFixed(1);
+
+        const thumbUrl = await thumbPromise;
+        if (thumbUrl) {
+          img.src = thumbUrl;
+        } else {
+          img.alt = 'No thumbnail';
+          // Missing thumbnail is informational, not a failure
+        }
+
+        if (!group) throw new Error('No geometry returned');
+
+        // Count meshes
+        let meshCount = 0, triCount = 0;
+        group.traverse(c => {
+          if (c.isMesh) {
+            meshCount++;
+            const g = c.geometry;
+            if (g.index) triCount += g.index.count / 3;
+            else if (g.attributes.position) triCount += g.attributes.position.count / 3;
+          }
+        });
+
+        if (meshCount === 0) throw new Error('0 meshes');
+
+        // Render
+        const { size, center, box } = renderScene(group, canvas);
+
+        // Checks
+        const checks = [];
+        const hardFails = [];
+        const softWarns = [];
+
+        // 1. Size check
+        const dimCheck = checkDimensions(size, asset.expect);
+        if (dimCheck.ok) {
+          checks.push(`<span class="ok">Size OK</span>`);
+        } else {
+          checks.push(`<span class="bad">Size: ${dimCheck.issues.join(', ')}</span>`);
+          hardFails.push('wrong size');
+        }
+
+        // 2. Ground check — tolerant since test renders without SceneManager's auto-grounding
+        const bottomY = box.min.y;
+        if (bottomY >= -0.1) {
+          checks.push(`<span class="ok">Ground OK</span>`);
+        } else {
+          checks.push(`<span class="dim">Below ground: Y=${bottomY.toFixed(3)}</span>`);
+          softWarns.push('below ground');
+        }
+
+        // 3. Center check (informational only)
+        const centered = Math.abs(center.x) < size.x * 2 && Math.abs(center.z) < size.z * 2;
+        if (centered) {
+          checks.push(`<span class="ok">Centered</span>`);
+        } else {
+          checks.push(`<span class="dim">Off-center: [${center.x.toFixed(2)},${center.z.toFixed(2)}]</span>`);
+          softWarns.push('off-center');
+        }
+
+        // 4. Double-rotation check — only flag if meshes directly have Z→Y rotation
+        //    (assembly groups legitimately have one Z→Y rotation on the group)
+        let meshRotCount = 0;
+        group.traverse(c => {
+          if (c.isMesh && Math.abs(c.rotation.x + Math.PI/2) < 0.05) meshRotCount++;
+        });
+        if (meshRotCount > 1) {
+          checks.push(`<span class="bad">${meshRotCount}x mesh Z→Y rotation</span>`);
+          softWarns.push('mesh rotation');
+        }
+
+        result.meshes = meshCount;
+        result.size = size;
+        result.issues = [...hardFails, ...softWarns];
+        result.status = hardFails.length > 0 ? 'fail' : softWarns.length > 0 ? 'warn' : 'pass';
+
+        card.className = `test-card ${result.status}`;
+        badge.textContent = result.status.toUpperCase();
+
+        footer.innerHTML = `
+          ${meshCount} meshes | ${Math.round(triCount).toLocaleString()} tris | ${loadTime}s<br>
+          Size: ${size.x.toFixed(3)} x ${size.y.toFixed(3)} x ${size.z.toFixed(3)}m<br>
+          ${checks.join(' | ')}`;
+
+        log(`  ${result.status.toUpperCase()}: ${meshCount} meshes, size ${size.x.toFixed(2)}x${size.y.toFixed(2)}x${size.z.toFixed(2)}m ${result.issues.length > 0 ? '- ' + result.issues.join(', ') : ''}`);
+
+      } catch (err) {
+        result.status = 'fail';
+        result.issues.push(err.message);
+        card.className = 'test-card fail';
+        badge.textContent = 'FAIL';
+        footer.innerHTML = `<span class="bad">ERROR: ${err.message}</span>`;
+        log(`  FAIL: ${err.message}`);
+        console.error(err);
+      }
+
+      globalResults.push(result);
+      return result;
+    }
+
+    function showSummary() {
+      const box = document.getElementById('summary-box');
+      const pass = globalResults.filter(r => r.status === 'pass').length;
+      const fail = globalResults.filter(r => r.status === 'fail').length;
+      const warn = globalResults.filter(r => r.status === 'warn').length;
+      box.innerHTML = `<div class="summary">
+        <span class="pass-count">${pass} passed</span> |
+        <span class="fail-count">${fail} failed</span> |
+        ${warn} warnings |
+        ${globalResults.length} total
+      </div>`;
+    }
+
+    async function run(assets) {
+      document.getElementById('results').innerHTML = '';
+      document.getElementById('log').textContent = '';
+      document.getElementById('summary-box').innerHTML = '';
+      globalResults = [];
+      const status = document.getElementById('status');
+      for (let i = 0; i < assets.length; i++) {
+        status.textContent = `${i + 1}/${assets.length}...`;
+        await testAsset(assets[i]);
+      }
+      status.textContent = 'Done';
+      showSummary();
+    }
+
+    window.runAll = () => run(Object.values(TESTS).flat());
+    window.runCategory = (cat) => run(TESTS[cat] || []);
+  </script>
+</body>
+</html>

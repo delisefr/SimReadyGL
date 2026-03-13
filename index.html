@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SimReady GL - USD Viewer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1f4e6;</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="viewport"></canvas>
+
+    <!-- Top toolbar -->
+    <div id="toolbar">
+      <div class="toolbar-left">
+        <button id="btn-browse" class="toolbar-btn" title="Browse SimReady Assets">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+          </svg>
+          Browse
+        </button>
+        <div class="toolbar-separator"></div>
+        <button id="btn-orbit" class="toolbar-btn active" title="Orbit Mode (O)" data-mode="orbit">Orbit</button>
+        <button id="btn-fly" class="toolbar-btn" title="Fly Mode (P)" data-mode="fly">Fly</button>
+        <div class="toolbar-separator"></div>
+        <button id="btn-reset-camera" class="toolbar-btn" title="Reset Camera (F)">Reset</button>
+        <button id="btn-wireframe" class="toolbar-btn" title="Toggle Wireframe (Z)">Wire</button>
+      </div>
+      <div class="toolbar-center">
+        <span id="asset-name">SimReady GL</span>
+      </div>
+      <div class="toolbar-right">
+        <button id="btn-env" class="toolbar-btn active" title="Toggle Environment">Env</button>
+        <button id="btn-grid" class="toolbar-btn active" title="Toggle Grid (G)">Grid</button>
+        <button id="btn-stats" class="toolbar-btn" title="Toggle Stats (I)">Stats</button>
+        <button id="btn-fullscreen" class="toolbar-btn" title="Fullscreen">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="hidden">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <div id="loading-text">Loading...</div>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div id="loading-detail"></div>
+      </div>
+    </div>
+
+    <!-- Asset browser panel -->
+    <div id="asset-browser" class="hidden">
+      <div class="panel-header">
+        <h2>SimReady Assets</h2>
+        <input type="text" id="asset-search" placeholder="Search assets..." autocomplete="off" />
+        <button id="btn-close-browser" class="close-btn">&times;</button>
+      </div>
+      <div id="asset-categories"></div>
+      <div id="asset-grid"></div>
+    </div>
+
+    <!-- Scene info panel -->
+    <div id="scene-info" class="hidden">
+      <div class="info-row"><span>Meshes:</span><span id="info-meshes">0</span></div>
+      <div class="info-row"><span>Triangles:</span><span id="info-tris">0</span></div>
+      <div class="info-row"><span>Materials:</span><span id="info-mats">0</span></div>
+      <div class="info-row"><span>Textures:</span><span id="info-texs">0</span></div>
+      <div class="info-row"><span>FPS:</span><span id="info-fps">0</span></div>
+    </div>
+
+    <!-- Controls help -->
+    <div id="controls-help">
+      <div><kbd>LMB</kbd> Orbit / Look &middot; <kbd>RMB</kbd> Pan &middot; <kbd>Scroll</kbd> Zoom</div>
+      <div><kbd>WASD</kbd> Move &middot; <kbd>Space</kbd> Up &middot; <kbd>Shift</kbd> Fast &middot; <kbd>F</kbd> Focus</div>
+    </div>
+
+    <!-- Texture loading progress (viewport bottom) -->
+    <div id="texture-progress" class="hidden">
+      <div id="texture-progress-bar"></div>
+      <span id="texture-progress-text"></span>
+    </div>
+
+    <!-- Version indicator -->
+    <div id="version-tag">v1.6.0</div>
+
+    <!-- Version indicator -->
+
+    <!-- Drop zone -->
+    <div id="drop-zone" class="hidden">
+      <div class="drop-content">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+        </svg>
+        <p>Drop USD / USDZ files here</p>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
