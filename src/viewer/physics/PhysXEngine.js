@@ -4,7 +4,7 @@ export class PhysXEngine extends PhysicsEngine {
   constructor() {
     super();
     this.name = 'PhysX';
-    this.px = null;         // PhysX module
+    this.px = null;
     this.foundation = null;
     this.physics = null;
     this.scene = null;
@@ -15,53 +15,57 @@ export class PhysXEngine extends PhysicsEngine {
   }
 
   async init() {
-    this._reportProgress('Importing PhysX JS...', 0);
-
-    // Dynamic import the module factory + resolve WASM URL via Vite
-    const [{ default: PhysXModule }, wasmAsset] = await Promise.all([
-      import('physx-js-webidl'),
-      import('physx-js-webidl/physx-js-webidl.wasm?url'),
-    ]);
-    const wasmUrl = wasmAsset.default;
-
-    // Fetch WASM with byte-level progress tracking
+    // Step 1: Pre-download WASM with progress (from public/ static asset)
+    console.warn('[PhysX] Step 1: Downloading WASM...');
     this._reportProgress('Downloading PhysX WASM...', 0.05);
-    const wasmBinary = await this._fetchWasmWithProgress(wasmUrl);
+    const wasmBinary = await this._fetchWasmWithProgress('/physx-js-webidl.wasm');
+    console.warn('[PhysX] WASM downloaded:', wasmBinary.byteLength, 'bytes');
 
-    // Compile + instantiate via Emscripten with pre-fetched binary
+    // Step 2: Import the JS module (pre-optimized by Vite, no page reload)
+    console.warn('[PhysX] Step 2: Importing JS module...');
+    this._reportProgress('Loading PhysX module...', 0.6);
+    const { default: PhysXModule } = await import('physx-js-webidl');
+    console.warn('[PhysX] JS module imported');
+
+    // Step 3: Compile WASM + initialize Emscripten with pre-fetched binary
+    console.warn('[PhysX] Step 3: Compiling WASM...');
     this._reportProgress('Compiling PhysX WASM...', 0.7);
     this.px = await PhysXModule({ wasmBinary });
+    console.warn('[PhysX] WASM compiled, PHYSICS_VERSION:', this.px.PHYSICS_VERSION);
 
+    // Step 4: Create PhysX SDK objects
     this._reportProgress('Initializing PhysX SDK...', 0.9);
-
     const px = this.px;
 
-    // Foundation
-    const allocator = new px.PxDefaultAllocator();
-    const errorCallback = new px.PxDefaultErrorCallback();
-    this.foundation = px.CreateFoundation(px.PHYSICS_VERSION, allocator, errorCallback);
+    try {
+      console.error('[PhysX] Creating foundation...');
+      const allocator = new px.PxDefaultAllocator();
+      const errorCallback = new px.PxDefaultErrorCallback();
+      this.foundation = px.CreateFoundation(px.PHYSICS_VERSION, allocator, errorCallback);
+      console.error('[PhysX] Foundation:', !!this.foundation);
 
-    // Tolerance scale (1 unit = 1 meter)
-    const toleranceScale = new px.PxTolerancesScale();
-    toleranceScale.length = 1;
-    toleranceScale.speed = 10;
-    this.toleranceScale = toleranceScale;
+      const toleranceScale = new px.PxTolerancesScale();
+      toleranceScale.length = 1;
+      toleranceScale.speed = 10;
+      this.toleranceScale = toleranceScale;
 
-    // Physics SDK
-    this.physics = px.CreatePhysics(px.PHYSICS_VERSION, this.foundation, toleranceScale);
-
-    // CPU dispatcher
-    this.dispatcher = px.DefaultCpuDispatcherCreate(2);
-
-    // Default material
-    this.material = this.physics.createMaterial(0.5, 0.5, 0.3);
+      console.error('[PhysX] Creating physics...');
+      this.physics = px.CreatePhysics(px.PHYSICS_VERSION, this.foundation, toleranceScale);
+      console.error('[PhysX] Creating dispatcher (0 threads)...');
+      this.dispatcher = px.DefaultCpuDispatcherCreate(0);
+      this.material = this.physics.createMaterial(0.5, 0.5, 0.3);
+      console.error('[PhysX] SDK init COMPLETE');
+    } catch (e) {
+      console.error('[PhysX] SDK init CRASHED:', e);
+      throw e;
+    }
 
     this._reportProgress('PhysX ready', 1);
     this.ready = true;
   }
 
-  async _fetchWasmWithProgress(wasmUrl) {
-    const response = await fetch(wasmUrl);
+  async _fetchWasmWithProgress(url) {
+    const response = await fetch(url);
     if (!response.ok) throw new Error(`PhysX WASM fetch failed: ${response.status}`);
 
     const contentLength = response.headers.get('Content-Length');
@@ -80,10 +84,9 @@ export class PhysXEngine extends PhysicsEngine {
       const pct = Math.min(receivedBytes / totalBytes, 1);
       const mb = (receivedBytes / 1_048_576).toFixed(1);
       const totalMb = (totalBytes / 1_048_576).toFixed(1);
-      this._reportProgress(`Downloading PhysX WASM... ${mb}/${totalMb} MB`, 0.05 + pct * 0.6);
+      this._reportProgress(`Downloading PhysX WASM ${mb}/${totalMb} MB`, 0.05 + pct * 0.5);
     }
 
-    // Combine chunks into a single ArrayBuffer
     const wasmBytes = new Uint8Array(receivedBytes);
     let offset = 0;
     for (const chunk of chunks) {
@@ -100,17 +103,38 @@ export class PhysXEngine extends PhysicsEngine {
     const sceneDesc = new px.PxSceneDesc(this.toleranceScale);
     sceneDesc.gravity = new px.PxVec3(gravity.x, gravity.y, gravity.z);
     sceneDesc.cpuDispatcher = this.dispatcher;
-    sceneDesc.filterShader = px.DefaultFilterShader();
+
+    // Set up filter shader that enables contact solving
+    const filterShader = new px.PassThroughFilterShaderImpl();
+    filterShader.filterShader = (attr0, fd0w0, fd0w1, fd0w2, fd0w3, attr1, fd1w0, fd1w1, fd1w2, fd1w3) => {
+      // Return eDEFAULT filter flag (allow collision)
+      filterShader.outputPairFlags = px.PxPairFlagEnum.eCONTACT_DEFAULT;
+      return px.PxFilterFlagEnum.eDEFAULT;
+    };
+    px.setupPassThroughFilterShader(sceneDesc, filterShader);
 
     this.scene = this.physics.createScene(sceneDesc);
+    this._filterShader = filterShader; // prevent GC
+    console.warn('[PhysX] Scene created with contact filter, gravity:', gravity.y);
   }
 
   createGroundPlane(friction, restitution) {
     const px = this.px;
     const mat = this.physics.createMaterial(friction, friction, restitution);
-    const plane = new px.PxPlane(new px.PxVec3(0, 1, 0), 0);
-    const groundActor = px.CreatePlane(this.physics, plane, mat);
+
+    // Create a large static box as ground (mesh collider)
+    // Box at Y=-0.5 with halfExtent Y=0.5 puts the top surface at Y=0
+    const groundPose = new px.PxTransform(
+      new px.PxVec3(0, -0.5, 0),
+      new px.PxQuat(px.PxIDENTITYEnum.PxIdentity)
+    );
+    const groundGeom = new px.PxBoxGeometry(100, 0.5, 100);
+    const groundActor = px.CreateStatic(
+      this.physics, groundPose, groundGeom, mat,
+      new px.PxTransform(new px.PxVec3(0, 0, 0), new px.PxQuat(px.PxIDENTITYEnum.PxIdentity))
+    );
     this.scene.addActor(groundActor);
+    console.warn('[PhysX] Ground box added to scene');
     return groundActor;
   }
 
@@ -128,7 +152,6 @@ export class PhysXEngine extends PhysicsEngine {
 
     const geom = new px.PxBoxGeometry(halfExtents.x, halfExtents.y, halfExtents.z);
 
-    // Density from mass and volume
     const volume = halfExtents.x * halfExtents.y * halfExtents.z * 8;
     const density = volume > 0 ? mass / volume : 1;
 
@@ -181,7 +204,6 @@ export class PhysXEngine extends PhysicsEngine {
   createGrabConstraint(body, worldHitPoint) {
     const px = this.px;
 
-    // Create a kinematic actor at the hit point
     const pose = new px.PxTransform(
       new px.PxVec3(worldHitPoint.x, worldHitPoint.y, worldHitPoint.z),
       new px.PxQuat(px.PxIDENTITYEnum.PxIdentity)
@@ -189,14 +211,12 @@ export class PhysXEngine extends PhysicsEngine {
 
     this._grabJointBody = this.physics.createRigidDynamic(pose);
     this._grabJointBody.setRigidBodyFlag(px.PxRigidBodyFlagEnum.eKINEMATIC, true);
-    // Tiny box shape so PhysX doesn't complain, but disable collision
     const tinyGeom = new px.PxBoxGeometry(0.01, 0.01, 0.01);
     const shape = this.physics.createShape(tinyGeom, this.material);
     shape.setFlag(px.PxShapeFlagEnum.eSIMULATION_SHAPE, false);
     this._grabJointBody.attachShape(shape);
     this.scene.addActor(this._grabJointBody);
 
-    // Compute local pivot on the dynamic body
     const bodyPose = body.getGlobalPose();
     const localFrame0 = new px.PxTransform(
       new px.PxVec3(
@@ -211,10 +231,8 @@ export class PhysXEngine extends PhysicsEngine {
       new px.PxQuat(px.PxIDENTITYEnum.PxIdentity)
     );
 
-    // D6 joint with spring drive
     this._grabJoint = px.D6JointCreate(this.physics, body, localFrame0, this._grabJointBody, localFrame1);
 
-    // Free all axes so the spring pulls the body
     this._grabJoint.setMotion(px.PxD6AxisEnum.eX, px.PxD6MotionEnum.eFREE);
     this._grabJoint.setMotion(px.PxD6AxisEnum.eY, px.PxD6MotionEnum.eFREE);
     this._grabJoint.setMotion(px.PxD6AxisEnum.eZ, px.PxD6MotionEnum.eFREE);
@@ -222,7 +240,6 @@ export class PhysXEngine extends PhysicsEngine {
     this._grabJoint.setMotion(px.PxD6AxisEnum.eSWING1, px.PxD6MotionEnum.eFREE);
     this._grabJoint.setMotion(px.PxD6AxisEnum.eSWING2, px.PxD6MotionEnum.eFREE);
 
-    // Strong linear spring drive
     const drive = new px.PxD6JointDrive(5000, 500, Infinity, true);
     this._grabJoint.setDrive(px.PxD6DriveEnum.eX, drive);
     this._grabJoint.setDrive(px.PxD6DriveEnum.eY, drive);

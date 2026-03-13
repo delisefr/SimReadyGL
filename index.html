@@ -31,10 +31,6 @@
           <option value="PhysX">PhysX</option>
           <option value="Newton">Newton</option>
         </select>
-        <span id="physics-engine-status" class="toolbar-status hidden">
-          <span id="physics-status-bar"></span>
-          <span id="physics-status-text"></span>
-        </span>
         <button id="btn-physics-play" class="toolbar-btn" title="Start Physics Simulation">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
             <polygon points="6,4 20,12 6,20"/>
@@ -47,6 +43,10 @@
           </svg>
           Stop
         </button>
+        <span id="physics-engine-status" class="toolbar-status hidden">
+          <span id="physics-status-bar"></span>
+          <span id="physics-status-text"></span>
+        </span>
       </div>
       <div class="toolbar-center">
         <span id="asset-name">SimReady GL</span>
@@ -60,6 +60,7 @@
         <div class="toolbar-separator"></div>
         <button id="btn-env" class="toolbar-btn active" title="Toggle Environment">Env</button>
         <button id="btn-grid" class="toolbar-btn active" title="Toggle Grid (G)">Grid</button>
+        <button id="btn-ground" class="toolbar-btn active" title="Toggle Ground Plane">Ground</button>
         <button id="btn-stats" class="toolbar-btn" title="Toggle Stats (I)">Stats</button>
         <button id="btn-fullscreen" class="toolbar-btn" title="Fullscreen">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

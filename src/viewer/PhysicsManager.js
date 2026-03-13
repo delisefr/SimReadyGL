@@ -61,6 +61,8 @@ export class PhysicsManager {
     if (!ENGINES[name]) throw new Error(`Unknown physics engine: ${name}`);
     if (name === this.engineName && this._engineReady) return;
 
+    console.warn('[Physics] setEngine:', name);
+
     const wasRunning = this.running;
     if (wasRunning) this.stop();
     this.clearBodies();
@@ -74,21 +76,27 @@ export class PhysicsManager {
     this._engineReady = false;
 
     await this._initEngine(name);
-
-    return this._initPromise;
+    console.warn('[Physics] engine ready:', name);
   }
 
   async _initEngine(name) {
+    console.warn('[Physics] _initEngine:', name);
     this.engine = ENGINES[name]();
     this.engine.onProgress = (status, progress) => {
+      console.warn('[Physics] progress:', status, Math.round(progress * 100) + '%');
       if (this.onEngineProgress) this.onEngineProgress(status, progress);
     };
-    this._initPromise = this.engine.init().then(() => {
+    try {
+      await this.engine.init();
+      console.warn('[Physics] init() done, creating world...');
       this.engine.createWorld({ x: 0, y: -9.81, z: 0 });
       this.engine.createGroundPlane(0.5, 0.3);
       this._engineReady = true;
-    });
-    return this._initPromise;
+      console.warn('[Physics] engine fully ready');
+    } catch (err) {
+      console.error('[Physics] init failed:', err);
+      throw err;
+    }
   }
 
   // --- Body management ---

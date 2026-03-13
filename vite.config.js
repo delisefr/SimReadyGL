@@ -11,6 +11,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 800,
   },
   optimizeDeps: {
-    include: ['three'],
+    include: ['three', 'physx-js-webidl'],
   },
 });

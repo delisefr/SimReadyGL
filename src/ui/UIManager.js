@@ -78,6 +78,13 @@ export class UIManager {
       btnGrid.classList.toggle('active', isGrid);
     });
 
+    // Ground
+    const btnGround = document.getElementById('btn-ground');
+    btnGround.addEventListener('click', () => {
+      const isGround = app.scene.toggleGround();
+      btnGround.classList.toggle('active', isGround);
+    });
+
     // Stats
     const btnStats = document.getElementById('btn-stats');
     btnStats.addEventListener('click', () => {
@@ -142,10 +149,12 @@ export class UIManager {
 
     engineSelect.addEventListener('change', async () => {
       const name = engineSelect.value;
+      const prevName = app.physics.engineName;
       engineSelect.disabled = true;
       btnPhysicsPlay.disabled = true;
       engineStatus.classList.remove('hidden');
-      engineStatus.textContent = `Loading ${name}...`;
+      statusText.textContent = `Loading ${name}...`;
+      statusBar.style.setProperty('--progress', '0%');
       try {
         await app.physics.setEngine(name);
         btnPhysicsPlay.disabled = false;
@@ -153,8 +162,7 @@ export class UIManager {
         console.error('Failed to load physics engine:', err);
         this.showError(err.message);
         engineStatus.classList.add('hidden');
-        // Revert to previous engine
-        engineSelect.value = app.physics.engineName;
+        engineSelect.value = prevName;
         btnPhysicsPlay.disabled = false;
       } finally {
         if (!app.physics.running) {

@@ -45,6 +45,7 @@ export class SceneManager {
     // State
     this.wireframe = false;
     this.showGrid = true;
+    this.showGround = true;
     this.showEnv = true;
 
     // Stats tracking
@@ -172,9 +173,13 @@ export class SceneManager {
     this.gridHelper.material.transparent = true;
     this.scene.add(this.gridHelper);
 
-    // Ground plane for shadow catching
+    // Visible ground plane with subtle material
     const groundGeo = new THREE.PlaneGeometry(200, 200);
-    const groundMat = new THREE.ShadowMaterial({ opacity: 0.15 });
+    const groundMat = new THREE.MeshStandardMaterial({
+      color: 0x1a1a1a,
+      roughness: 0.9,
+      metalness: 0.0,
+    });
     this.groundPlane = new THREE.Mesh(groundGeo, groundMat);
     this.groundPlane.rotation.x = -Math.PI / 2;
     this.groundPlane.receiveShadow = true;
@@ -285,8 +290,13 @@ export class SceneManager {
   toggleGrid() {
     this.showGrid = !this.showGrid;
     this.gridHelper.visible = this.showGrid;
-    this.groundPlane.visible = this.showGrid;
     return this.showGrid;
+  }
+
+  toggleGround() {
+    this.showGround = !this.showGround;
+    this.groundPlane.visible = this.showGround;
+    return this.showGround;
   }
 
   toggleEnv() {
