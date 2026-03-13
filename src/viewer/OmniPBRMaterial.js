@@ -80,8 +80,8 @@ export class OmniPBRMaterialMapper {
     if (mdlProps) {
       const dc = mdlProps.diffuse_color_constant;
       if (Array.isArray(dc)) mat.color.setRGB(dc[0], dc[1], dc[2]);
-      mat.metalness = mdlProps.metallic_constant ?? 0;
-      mat.roughness = mdlProps.reflection_roughness_constant ?? 0.5;
+      if (mdlProps.metallic_constant !== undefined) mat.metalness = mdlProps.metallic_constant;
+      if (mdlProps.reflection_roughness_constant !== undefined) mat.roughness = mdlProps.reflection_roughness_constant;
       if (mdlProps.specular_level !== undefined) {
         mat.specularIntensity = mdlProps.specular_level;
       }
@@ -95,7 +95,7 @@ export class OmniPBRMaterialMapper {
         mat.opacity = mdlProps.opacity_constant;
       }
       const bumpFactor = mdlProps.bump_factor ?? 1;
-      const flipV = mdlProps.flip_tangent_v !== false ? -1 : 1;
+      const flipV = mdlProps.flip_tangent_v === true ? -1 : 1;
       mat.normalScale = new THREE.Vector2(bumpFactor, bumpFactor * flipV);
     }
 
