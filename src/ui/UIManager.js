@@ -107,13 +107,17 @@ export class UIManager {
     const engineStatus = document.getElementById('physics-engine-status');
 
     // Wire up engine progress reporting
+    const statusBar = document.getElementById('physics-status-bar');
+    const statusText = document.getElementById('physics-status-text');
+
     app.physics.onEngineProgress = (status, progress) => {
       if (progress < 1) {
-        engineStatus.textContent = status;
         engineStatus.classList.remove('hidden');
+        statusBar.style.setProperty('--progress', `${Math.round(progress * 100)}%`);
+        statusText.textContent = status;
       } else {
-        engineStatus.textContent = status;
-        // Fade out after a moment
+        statusBar.style.setProperty('--progress', '100%');
+        statusText.textContent = status;
         setTimeout(() => engineStatus.classList.add('hidden'), 1200);
       }
     };

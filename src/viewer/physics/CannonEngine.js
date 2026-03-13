@@ -102,7 +102,7 @@ export class CannonEngine extends PhysicsEngine {
     );
     const pivotB = new CANNON.Vec3(0, 0, 0);
 
-    const constraint = new CANNON.PointToPointConstraint(body, pivotA, this._grabJointBody, pivotB, 50);
+    const constraint = new CANNON.PointToPointConstraint(body, pivotA, this._grabJointBody, pivotB, 500);
     this.world.addConstraint(constraint);
     return constraint;
   }

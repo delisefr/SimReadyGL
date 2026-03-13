@@ -15,16 +15,24 @@ export class PhysXEngine extends PhysicsEngine {
   }
 
   async init() {
-    this._reportProgress('Loading PhysX module...', 0);
+    this._reportProgress('Importing PhysX JS...', 0);
 
-    // Dynamic import to avoid loading WASM until needed
-    const PhysXModule = (await import('physx-js-webidl')).default;
+    // Dynamic import the module factory + resolve WASM URL via Vite
+    const [{ default: PhysXModule }, wasmAsset] = await Promise.all([
+      import('physx-js-webidl'),
+      import('physx-js-webidl/physx-js-webidl.wasm?url'),
+    ]);
+    const wasmUrl = wasmAsset.default;
 
-    this._reportProgress('Compiling PhysX WASM...', 0.5);
+    // Fetch WASM with byte-level progress tracking
+    this._reportProgress('Downloading PhysX WASM...', 0.05);
+    const wasmBinary = await this._fetchWasmWithProgress(wasmUrl);
 
-    this.px = await PhysXModule();
+    // Compile + instantiate via Emscripten with pre-fetched binary
+    this._reportProgress('Compiling PhysX WASM...', 0.7);
+    this.px = await PhysXModule({ wasmBinary });
 
-    this._reportProgress('Initializing PhysX SDK...', 0.8);
+    this._reportProgress('Initializing PhysX SDK...', 0.9);
 
     const px = this.px;
 
@@ -50,6 +58,40 @@ export class PhysXEngine extends PhysicsEngine {
 
     this._reportProgress('PhysX ready', 1);
     this.ready = true;
+  }
+
+  async _fetchWasmWithProgress(wasmUrl) {
+    const response = await fetch(wasmUrl);
+    if (!response.ok) throw new Error(`PhysX WASM fetch failed: ${response.status}`);
+
+    const contentLength = response.headers.get('Content-Length');
+    const totalBytes = contentLength ? parseInt(contentLength, 10) : 5_344_000;
+
+    const reader = response.body.getReader();
+    const chunks = [];
+    let receivedBytes = 0;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      receivedBytes += value.length;
+
+      const pct = Math.min(receivedBytes / totalBytes, 1);
+      const mb = (receivedBytes / 1_048_576).toFixed(1);
+      const totalMb = (totalBytes / 1_048_576).toFixed(1);
+      this._reportProgress(`Downloading PhysX WASM... ${mb}/${totalMb} MB`, 0.05 + pct * 0.6);
+    }
+
+    // Combine chunks into a single ArrayBuffer
+    const wasmBytes = new Uint8Array(receivedBytes);
+    let offset = 0;
+    for (const chunk of chunks) {
+      wasmBytes.set(chunk, offset);
+      offset += chunk.length;
+    }
+
+    return wasmBytes.buffer;
   }
 
   createWorld(gravity) {

@@ -146,8 +146,15 @@ export class PhysicsManager {
     if (size.length() < 0.001) return;
 
     const halfExtents = { x: size.x / 2, y: size.y / 2, z: size.z / 2 };
+
+    // Reasonable mass: ~10 kg/m^3 (light props), clamped to sensible range
     const volume = size.x * size.y * size.z;
-    const mass = Math.max(0.1, volume * 100);
+    const mass = Math.max(0.5, Math.min(50, volume * 10));
+
+    // Get the world-space offset from root's world position to bbox center
+    const rootWorldPos = new THREE.Vector3();
+    root.getWorldPosition(rootWorldPos);
+    const offset = center.clone().sub(rootWorldPos);
 
     const body = this.engine.createBoxBody(
       halfExtents,
@@ -156,24 +163,16 @@ export class PhysicsManager {
       mass
     );
 
-    const rootWorldPos = new THREE.Vector3();
-    root.getWorldPosition(rootWorldPos);
-    const offset = center.clone().sub(rootWorldPos);
-
     this.bodies.push({ body, root, meshes, offset, center: center.clone() });
   }
 
   _saveState() {
-    this.savedState = this.bodies.map(entry => {
-      const t = this.engine.getBodyTransform(entry.body);
-      return {
-        bodyPosition: { ...t.position },
-        bodyQuaternion: { ...t.quaternion },
-        rootPosition: entry.root.position.clone(),
-        rootQuaternion: entry.root.quaternion.clone(),
-        rootScale: entry.root.scale.clone(),
-      };
-    });
+    this.savedState = this.bodies.map(entry => ({
+      bodyTransform: this.engine.getBodyTransform(entry.body),
+      rootPosition: entry.root.position.clone(),
+      rootQuaternion: entry.root.quaternion.clone(),
+      rootScale: entry.root.scale.clone(),
+    }));
   }
 
   clearBodies() {
@@ -213,7 +212,7 @@ export class PhysicsManager {
       const saved = this.savedState[i];
       if (!saved) continue;
 
-      this.engine.setBodyTransform(entry.body, saved.bodyPosition, saved.bodyQuaternion);
+      this.engine.setBodyTransform(entry.body, saved.bodyTransform.position, saved.bodyTransform.quaternion);
       this.engine.zeroVelocity(entry.body);
       this.engine.sleepBody(entry.body);
 
@@ -234,9 +233,27 @@ export class PhysicsManager {
       const bodyPos = new THREE.Vector3(t.position.x, t.position.y, t.position.z);
       const bodyQuat = new THREE.Quaternion(t.quaternion.x, t.quaternion.y, t.quaternion.z, t.quaternion.w);
 
+      // Compute desired world position for the root object:
+      // bodyPos is the bbox center in world space, offset is (bboxCenter - rootWorldPos)
       const rotatedOffset = entry.offset.clone().applyQuaternion(bodyQuat);
-      entry.root.position.copy(bodyPos.sub(rotatedOffset));
-      entry.root.quaternion.copy(bodyQuat);
+      const desiredWorldPos = bodyPos.clone().sub(rotatedOffset);
+
+      // Convert world position to local space via parent
+      if (entry.root.parent) {
+        entry.root.parent.updateWorldMatrix(true, false);
+        entry.root.position.copy(
+          desiredWorldPos.applyMatrix4(
+            new THREE.Matrix4().copy(entry.root.parent.matrixWorld).invert()
+          )
+        );
+        // Convert world quaternion to local
+        const parentQuat = new THREE.Quaternion();
+        entry.root.parent.getWorldQuaternion(parentQuat);
+        entry.root.quaternion.copy(parentQuat.invert().multiply(bodyQuat));
+      } else {
+        entry.root.position.copy(desiredWorldPos);
+        entry.root.quaternion.copy(bodyQuat);
+      }
     }
   }
 

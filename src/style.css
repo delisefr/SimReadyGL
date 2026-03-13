@@ -146,15 +146,34 @@ html, body {
 }
 
 .toolbar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11px;
   color: var(--accent);
   white-space: nowrap;
-  animation: pulse-status 1.2s ease-in-out infinite;
 }
 
-@keyframes pulse-status {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+#physics-status-bar {
+  display: inline-block;
+  width: 60px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+#physics-status-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.15s ease-out;
 }
 
 /* Loading overlay */
