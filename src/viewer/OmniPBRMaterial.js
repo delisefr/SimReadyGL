@@ -184,7 +184,7 @@ export class OmniPBRMaterialMapper {
     }
 
     // Step 1: Find all material prim paths and their shader data
-    const materials = new Map(); // materialPrimPath -> { mdlSource, textures, shaderPath }
+    const materials = new Map(); // materialPrimPath -> { mdlSource, textures, shaderPath, props }
 
     for (const [path, spec] of Object.entries(allSpecsByPath)) {
       const fields = spec.fields || {};
@@ -195,18 +195,22 @@ export class OmniPBRMaterialMapper {
         const parts = shaderPath.split('/');
         parts.pop(); // Remove "Shader"
         const matPath = parts.join('/');
-        if (!materials.has(matPath)) materials.set(matPath, { textures: {} });
+        if (!materials.has(matPath)) materials.set(matPath, { textures: {}, props: {} });
         materials.get(matPath).mdlSource = fields.default;
         materials.get(matPath).shaderPath = shaderPath;
       }
 
-      // Find texture inputs on shaders (inputs:XXX_texture)
+      // Find all shader inputs
       const inputMatch = path.match(/^(.+)\/([^/]+)\.inputs:(\w+)$/);
-      if (inputMatch && fields.default && typeof fields.default === 'string') {
+      if (inputMatch && fields.default != null) {
         const matPath = inputMatch[1]; // parent of shader
         const inputName = inputMatch[3];
-        if (!materials.has(matPath)) materials.set(matPath, { textures: {} });
-        materials.get(matPath).textures[inputName] = fields.default;
+        if (!materials.has(matPath)) materials.set(matPath, { textures: {}, props: {} });
+        if (typeof fields.default === 'string') {
+          materials.get(matPath).textures[inputName] = fields.default;
+        } else {
+          materials.get(matPath).props[inputName] = fields.default;
+        }
       }
     }
 
@@ -236,6 +240,14 @@ export class OmniPBRMaterialMapper {
         if (mdlContent) {
           mdlProps = this.parseMDL(mdlContent.text);
           texDir = mdlContent.dir;
+        }
+      }
+
+      // Build mdlProps from inline USDC inputs when no MDL file is available
+      if (!mdlProps && matData.props && Object.keys(matData.props).length > 0) {
+        mdlProps = {};
+        for (const [k, v] of Object.entries(matData.props)) {
+          mdlProps[k] = v;
         }
       }
 
@@ -372,7 +384,19 @@ export class OmniPBRMaterialMapper {
     let resolved = texPath.replace(/\\/g, '/');
     // Replace UDIM token with tile 1001 (standard single-tile UV)
     resolved = resolved.replace(/<UDIM>/g, '1001');
-    if (resolved.startsWith('./')) {
+    // Strip Windows absolute path prefix (e.g., "C:/Assets/dt_w/Hospital/..." -> "Hospital/...")
+    // Find the S3 key by matching the baseDir's top-level folder in the absolute path
+    if (/^[A-Za-z]:\//.test(resolved)) {
+      const topFolder = baseDir.split('/')[0];
+      const idx = resolved.indexOf('/' + topFolder + '/');
+      if (idx !== -1) {
+        resolved = resolved.substring(idx + 1);
+      } else {
+        // Fallback: use just the filename relative to baseDir
+        const fileName = resolved.split('/').pop();
+        resolved = baseDir + '/Textures/' + fileName;
+      }
+    } else if (resolved.startsWith('./')) {
       resolved = baseDir + '/' + resolved.substring(2);
     } else if (resolved.startsWith('../')) {
       const baseParts = baseDir.split('/');
