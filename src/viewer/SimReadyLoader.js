@@ -206,9 +206,8 @@ export class SimReadyLoader {
 
   /**
    * Load an Isaac asset from the omniverse-content-staging bucket.
-   * Uses the exact same pipeline as loadFromSimReady but with:
-   * - A proxy base URL instead of S3_BASE
-   * - File manifest from the index instead of collectAllReferences
+   * Same pipeline as loadFromSimReady but discovers references by parsing
+   * the root USD instead of using the S3 index + manifests.
    * @param {string} proxyBase - URL prefix for the CORS proxy (e.g. '/isaac-s3')
    * @param {object} item - Asset entry from isaac-assets.json
    * @param {Function} onProgress - Progress callback
@@ -227,46 +226,55 @@ export class SimReadyLoader {
 
     const assetDir = item.assetDir;
     const assetPath = item.usdPath;
-
-    // Build full paths from the file manifest (same structure as collectAllReferences output)
-    const usdPaths = new Set();
-    const mdlPaths = new Set();
-    for (const relFile of (item.files || [])) {
-      const fullPath = `${assetDir}/${relFile}`;
-      if (/\.(usd|usda|usdc)$/i.test(relFile)) usdPaths.add(fullPath);
-      else if (/\.mdl$/i.test(relFile)) mdlPaths.add(fullPath);
-    }
-    // Ensure root asset is included
-    usdPaths.add(assetPath);
-
-    // Cap at 100 USD files
-    const maxFiles = 100;
-    const allPathsArr = [];
-    for (const path of usdPaths) {
-      if (allPathsArr.length >= maxFiles) break;
-      allPathsArr.push({ path, size: 0 });
-    }
-    // Ensure root file is first
-    allPathsArr.sort((a, b) => {
-      if (a.path === assetPath) return -1;
-      if (b.path === assetPath) return 1;
-      return 0;
-    });
-
-    progress.total = allPathsArr.length + mdlPaths.size;
-    report(`Loading ${allPathsArr.length} USD + ${mdlPaths.size} MDL files...`);
-
-    // Fetch and parse all USD files — same method as loadFromSimReady
-    const assets = {};
     const concurrency = 8;
-    await this._fetchAndParseBatch(
-      allPathsArr.map(p => p.path), assets, assetDir, concurrency, progress, report, proxyBase
+    const assets = {};
+
+    // Step 1: Fetch and parse root USD
+    report('Downloading root USD...');
+    const rootBuffer = await this.fetchFile(`${proxyBase}/${assetPath}`);
+    const rootParsed = this.parseFileBuffer(rootBuffer, assetPath);
+    if (rootParsed) {
+      this._storeAsset(assets, assetPath, rootParsed, assetDir);
+      this.parsedByPath.set(assetPath, rootParsed);
+    }
+
+    // Step 2: Discover referenced files from parsed data
+    const referencedPaths = this._extractReferencePaths(rootParsed, assetDir);
+    const usdRefs = [...referencedPaths].filter(p => /\.(usd|usda|usdc)$/i.test(p));
+    const mdlRefs = [...referencedPaths].filter(p => /\.mdl$/i.test(p));
+
+    if (usdRefs.length > 0) {
+      progress.total = 1 + usdRefs.length + mdlRefs.length;
+      progress.loaded = 1;
+      report(`Loading ${usdRefs.length} referenced USD files...`);
+
+      // Step 3: Fetch referenced USD files
+      await this._fetchAndParseBatch(
+        usdRefs, assets, assetDir, concurrency, progress, report, proxyBase
+      );
+
+      // Recursively discover more references from newly parsed files (one level deep)
+      const moreRefs = new Set();
+      for (const [, parsed] of this.parsedByPath) {
+        for (const ref of this._extractReferencePaths(parsed, assetDir)) {
+          if (!assets[ref] && /\.(usd|usda|usdc)$/i.test(ref)) moreRefs.add(ref);
+        }
+      }
+      if (moreRefs.size > 0) {
+        report(`Loading ${moreRefs.size} additional references...`);
+        progress.total += moreRefs.size;
+        await this._fetchAndParseBatch(
+          [...moreRefs], assets, assetDir, concurrency, progress, report, proxyBase
+        );
+      }
+    }
+
+    // Step 4: Fetch MDL files
+    const mdlFiles = await this._fetchMDLFiles(
+      new Set(mdlRefs), assetDir, concurrency, progress, report, proxyBase
     );
 
-    // Fetch MDL files — same method as loadFromSimReady
-    const mdlFiles = await this._fetchMDLFiles(mdlPaths, assetDir, concurrency, progress, report, proxyBase);
-
-    // Compose scene — exact same as loadFromSimReady
+    // Step 5: Compose scene — exact same as loadFromSimReady
     report('Composing scene...');
     const group = await this._tryCompose(assets, assetPath, assetDir, mdlFiles);
 
@@ -290,6 +298,52 @@ export class SimReadyLoader {
     report('Done');
     if (onProgress) onProgress(progress);
     return wrapper;
+  }
+
+  /**
+   * Extract referenced file paths from parsed USD data.
+   * Scans specsByPath for reference and payload assetPaths.
+   */
+  _extractReferencePaths(parsed, assetDir) {
+    const paths = new Set();
+    if (!parsed || !parsed.specsByPath) return paths;
+
+    for (const [, spec] of Object.entries(parsed.specsByPath)) {
+      const fields = spec.fields || {};
+
+      // Check references
+      if (fields.references) {
+        for (const ref of (Array.isArray(fields.references) ? fields.references : [fields.references])) {
+          const assetPath = typeof ref === 'string' ? ref.replace(/@/g, '') : ref?.assetPath;
+          if (assetPath && !assetPath.startsWith('/')) {
+            paths.add(this.resolvePath(assetDir, assetPath));
+          }
+        }
+      }
+
+      // Check payloads
+      if (fields.payload) {
+        const payloads = Array.isArray(fields.payload) ? fields.payload : [fields.payload];
+        for (const p of payloads) {
+          const assetPath = typeof p === 'string' ? p.replace(/@/g, '') : p?.assetPath;
+          if (assetPath && !assetPath.startsWith('/')) {
+            paths.add(this.resolvePath(assetDir, assetPath));
+          }
+        }
+      }
+
+      // Check sublayer paths
+      if (fields.subLayers) {
+        for (const sub of (Array.isArray(fields.subLayers) ? fields.subLayers : [fields.subLayers])) {
+          const subPath = typeof sub === 'string' ? sub.replace(/@/g, '') : sub?.assetPath;
+          if (subPath && !subPath.startsWith('/')) {
+            paths.add(this.resolvePath(assetDir, subPath));
+          }
+        }
+      }
+    }
+
+    return paths;
   }
 
   /**
