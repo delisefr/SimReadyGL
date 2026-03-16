@@ -11,6 +11,7 @@ export class OmniPBRMaterialMapper {
     this.textureLoader.setCrossOrigin('anonymous');
     this.textureCache = new Map();
     this.pendingLoads = new Map();
+    this.textureBaseUrl = null; // Override S3_BASE when set (e.g. proxy URL)
     // Texture progress tracking
     this.textureTotal = 0;
     this.textureLoaded = 0;
@@ -424,8 +425,9 @@ export class OmniPBRMaterialMapper {
     }
 
     const probes = [];
+    const base = this.textureBaseUrl || S3_BASE;
     for (let t = 1001; t <= 1009; t++) {
-      const url = `${S3_BASE}/${resolved.replace(/<UDIM>/g, String(t))}`;
+      const url = `${base}/${resolved.replace(/<UDIM>/g, String(t))}`;
       probes.push(
         fetch(url, { method: 'HEAD' })
           .then(r => r.ok ? { tile: t, col: t - 1001 } : null)
@@ -469,7 +471,7 @@ export class OmniPBRMaterialMapper {
 
     // Load all tile images in parallel
     const imagePromises = tiles.map(t => {
-      const url = `${S3_BASE}/${resolved.replace(/<UDIM>/g, String(t.tile))}`;
+      const url = `${this.textureBaseUrl || S3_BASE}/${resolved.replace(/<UDIM>/g, String(t.tile))}`;
       return fetch(url)
         .then(r => r.ok ? r.blob() : null)
         .then(b => b ? createImageBitmap(b) : null)
@@ -568,7 +570,7 @@ export class OmniPBRMaterialMapper {
       resolved = baseDir + '/' + resolved;
     }
 
-    const url = resolved.startsWith('http') ? resolved : `${S3_BASE}/${resolved}`;
+    const url = resolved.startsWith('http') ? resolved : `${this.textureBaseUrl || S3_BASE}/${resolved}`;
     const cacheKey = url;
 
     if (this.textureCache.has(cacheKey)) {

@@ -124,19 +124,22 @@ class App {
         const group = gltf.scene;
         this.scene.setModel(group, item.name);
       } else {
-        // USD: fetch through proxy, parse with SimReadyLoader
+        // USD: use full multi-file loading pipeline through proxy
         this.currentAssetPath = item.usdPath;
-        this.ui.updateProgress(10, 'Downloading USD...');
 
-        const usdUrl = `${ISAAC_PROXY_BASE}/${item.usdPath}`;
-        const resp = await fetch(usdUrl);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        const buffer = await resp.arrayBuffer();
+        // Wire up texture progress tracking
+        this.loader.materialMapper.resetTextureProgress();
+        this.loader.materialMapper.onTextureProgress = (loaded, total, failed) => {
+          this.ui.showTextureProgress(loaded, total, failed);
+          if (loaded === total) {
+            this.scene.computeStats();
+            this.ui.updateSceneInfo(this.scene);
+          }
+        };
 
-        this.ui.updateProgress(60, 'Parsing USD...');
-        const group = this.loader.parseBuffer(buffer, item.usdPath.split('/').pop());
-
-        this.ui.updateProgress(90, 'Setting up scene...');
+        const group = await this.loader.loadFromIsaac(ISAAC_PROXY_BASE, item, (progress) => {
+          this.ui.updateProgress(progress.percent, progress.detail);
+        });
         this.scene.setModel(group, item.name);
       }
 

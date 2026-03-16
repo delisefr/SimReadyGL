@@ -241,6 +241,7 @@ export class AssetBrowser {
         glbPath: asset.glbPath,
         thumbnailPath: asset.thumbnailPath,
         assetDir: asset.assetDir,
+        files: asset.files || [],
       };
     });
 
