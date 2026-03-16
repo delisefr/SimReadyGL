@@ -308,37 +308,33 @@ export class SimReadyLoader {
     const paths = new Set();
     if (!parsed || !parsed.specsByPath) return paths;
 
+    const addRef = (raw) => {
+      if (!raw) return;
+      let p = typeof raw === 'string' ? raw.replace(/@/g, '') : raw?.assetPath;
+      if (!p || p === 'None' || p.startsWith('/')) return;
+      // Normalize backslashes
+      p = p.replace(/\\/g, '/');
+      // Must look like a file path
+      if (!/\.(usd|usda|usdc|mdl)$/i.test(p)) return;
+      paths.add(this.resolvePath(assetDir, p));
+    };
+
     for (const [, spec] of Object.entries(parsed.specsByPath)) {
       const fields = spec.fields || {};
 
-      // Check references
       if (fields.references) {
         for (const ref of (Array.isArray(fields.references) ? fields.references : [fields.references])) {
-          const assetPath = typeof ref === 'string' ? ref.replace(/@/g, '') : ref?.assetPath;
-          if (assetPath && !assetPath.startsWith('/')) {
-            paths.add(this.resolvePath(assetDir, assetPath));
-          }
+          addRef(ref);
         }
       }
-
-      // Check payloads
       if (fields.payload) {
-        const payloads = Array.isArray(fields.payload) ? fields.payload : [fields.payload];
-        for (const p of payloads) {
-          const assetPath = typeof p === 'string' ? p.replace(/@/g, '') : p?.assetPath;
-          if (assetPath && !assetPath.startsWith('/')) {
-            paths.add(this.resolvePath(assetDir, assetPath));
-          }
+        for (const p of (Array.isArray(fields.payload) ? fields.payload : [fields.payload])) {
+          addRef(p);
         }
       }
-
-      // Check sublayer paths
       if (fields.subLayers) {
-        for (const sub of (Array.isArray(fields.subLayers) ? fields.subLayers : [fields.subLayers])) {
-          const subPath = typeof sub === 'string' ? sub.replace(/@/g, '') : sub?.assetPath;
-          if (subPath && !subPath.startsWith('/')) {
-            paths.add(this.resolvePath(assetDir, subPath));
-          }
+        for (const s of (Array.isArray(fields.subLayers) ? fields.subLayers : [fields.subLayers])) {
+          addRef(s);
         }
       }
     }
