@@ -241,11 +241,13 @@ export class OmniPBRMaterialMapper {
     const createdMaterials = new Map(); // materialPrimPath -> Three.js material
 
     for (const [matPath, matData] of materials) {
-      // Try MDL first for full property data
+      // Only apply OmniPBR materials — skip UsdPreviewSurface (handled by USDComposer)
+      if (!matData.mdlSource) continue;
+
       let mdlProps = null;
       let texDir = assetDir;
 
-      if (matData.mdlSource && mdlFiles && mdlFiles.size > 0) {
+      if (mdlFiles && mdlFiles.size > 0) {
         const mdlContent = this._findMDLContent(matData.mdlSource, mdlFiles, assetDir);
         if (mdlContent) {
           mdlProps = this.parseMDL(mdlContent.text);
