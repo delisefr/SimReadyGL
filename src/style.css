@@ -393,6 +393,27 @@ html, body {
   opacity: 0.6;
 }
 
+.format-badge {
+  display: inline-block;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  line-height: 14px;
+}
+
+.format-badge.glb {
+  background: rgba(118, 185, 0, 0.2);
+  color: var(--accent);
+}
+
+.format-badge.usd {
+  background: rgba(100, 149, 237, 0.2);
+  color: #6495ed;
+}
+
 #asset-categories {
   display: flex;
   flex-wrap: wrap;

@@ -94,32 +94,52 @@ class App {
   }
 
   async loadIsaacAsset(item) {
-    this.currentAssetPath = item.glbPath;
     this.currentAssetRepo = 'isaac';
+    this.currentIsaacItem = item;
     this.ui.showLoading(`Loading ${item.displayName}...`);
     this.ui.hideTextureProgress();
 
     try {
-      const glbUrl = `${ISAAC_PROXY_BASE}/${item.glbPath}`;
-      this.ui.updateProgress(20, 'Downloading GLB...');
+      if (item.format === 'glb' && item.glbPath) {
+        // GLB: load directly with GLTFLoader
+        this.currentAssetPath = item.glbPath;
+        const glbUrl = `${ISAAC_PROXY_BASE}/${item.glbPath}`;
+        this.ui.updateProgress(20, 'Downloading GLB...');
 
-      const gltf = await new Promise((resolve, reject) => {
-        this.gltfLoader.load(
-          glbUrl,
-          resolve,
-          (xhr) => {
-            if (xhr.lengthComputable) {
-              const pct = 20 + Math.round((xhr.loaded / xhr.total) * 60);
-              this.ui.updateProgress(pct, `Downloading... ${(xhr.loaded / 1024 / 1024).toFixed(1)}MB`);
-            }
-          },
-          reject
-        );
-      });
+        const gltf = await new Promise((resolve, reject) => {
+          this.gltfLoader.load(
+            glbUrl,
+            resolve,
+            (xhr) => {
+              if (xhr.lengthComputable) {
+                const pct = 20 + Math.round((xhr.loaded / xhr.total) * 60);
+                this.ui.updateProgress(pct, `Downloading... ${(xhr.loaded / 1024 / 1024).toFixed(1)}MB`);
+              }
+            },
+            reject
+          );
+        });
 
-      this.ui.updateProgress(90, 'Setting up scene...');
-      const group = gltf.scene;
-      this.scene.setModel(group, item.name);
+        this.ui.updateProgress(90, 'Setting up scene...');
+        const group = gltf.scene;
+        this.scene.setModel(group, item.name);
+      } else {
+        // USD: fetch through proxy, parse with SimReadyLoader
+        this.currentAssetPath = item.usdPath;
+        this.ui.updateProgress(10, 'Downloading USD...');
+
+        const usdUrl = `${ISAAC_PROXY_BASE}/${item.usdPath}`;
+        const resp = await fetch(usdUrl);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const buffer = await resp.arrayBuffer();
+
+        this.ui.updateProgress(60, 'Parsing USD...');
+        const group = this.loader.parseBuffer(buffer, item.usdPath.split('/').pop());
+
+        this.ui.updateProgress(90, 'Setting up scene...');
+        this.scene.setModel(group, item.name);
+      }
+
       this.physics.stop();
       this.physics.clearBodies();
       this._resetPhysicsUI();
@@ -281,13 +301,16 @@ class App {
   }
 
   async _downloadIsaacAsset() {
-    this.ui.showLoading('Downloading GLB...');
+    const item = this.currentIsaacItem;
+    const isGlb = item && item.format === 'glb' && item.glbPath;
+    const downloadPath = isGlb ? item.glbPath : this.currentAssetPath;
+    this.ui.showLoading(isGlb ? 'Downloading GLB...' : 'Downloading USD...');
     try {
-      const glbUrl = `${ISAAC_PROXY_BASE}/${this.currentAssetPath}`;
-      const resp = await fetch(glbUrl);
+      const url = `${ISAAC_PROXY_BASE}/${downloadPath}`;
+      const resp = await fetch(url);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const blob = await resp.blob();
-      const fileName = this.currentAssetPath.split('/').pop();
+      const fileName = downloadPath.split('/').pop();
 
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);

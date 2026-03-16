@@ -236,6 +236,8 @@ export class AssetBrowser {
         displayName: asset.displayName,
         category: asset.category,
         subCategory: asset.subCategory,
+        format: asset.format || 'usd',
+        usdPath: asset.usdPath,
         glbPath: asset.glbPath,
         thumbnailPath: asset.thumbnailPath,
         assetDir: asset.assetDir,
@@ -322,8 +324,11 @@ export class AssetBrowser {
       const infoDiv = document.createElement('div');
       infoDiv.className = 'asset-info';
       const sizeStr = item.sizeFormatted ? ` &middot; ${item.sizeFormatted}` : '';
+      const formatBadge = item.repo === 'isaac'
+        ? `<span class="format-badge ${item.format}">${item.format.toUpperCase()}</span> `
+        : '';
       infoDiv.innerHTML = `
-        <div class="name">${this._escapeHtml(item.displayName)}</div>
+        <div class="name">${formatBadge}${this._escapeHtml(item.displayName)}</div>
         <div class="path">${this._escapeHtml(item.subCategory)}${sizeStr}</div>
       `;
 
