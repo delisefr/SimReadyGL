@@ -206,7 +206,9 @@ export class SimReadyLoader {
 
   /**
    * Load an Isaac asset from the omniverse-content-staging bucket.
-   * Uses a proxy base URL and the pre-built file manifest from the index.
+   * Uses the exact same pipeline as loadFromSimReady but with:
+   * - A proxy base URL instead of S3_BASE
+   * - File manifest from the index instead of collectAllReferences
    * @param {string} proxyBase - URL prefix for the CORS proxy (e.g. '/isaac-s3')
    * @param {object} item - Asset entry from isaac-assets.json
    * @param {Function} onProgress - Progress callback
@@ -214,6 +216,7 @@ export class SimReadyLoader {
   async loadFromIsaac(proxyBase, item, onProgress) {
     this.fetchCache.clear();
     this.parsedByPath.clear();
+    this.materialMapper.textureBaseUrl = proxyBase;
 
     const progress = { loaded: 0, total: 1, percent: 0, detail: '' };
     const report = (detail) => {
@@ -224,95 +227,54 @@ export class SimReadyLoader {
 
     const assetDir = item.assetDir;
     const assetPath = item.usdPath;
-    const usdFiles = (item.files || []).filter(f => /\.(usd|usda|usdc)$/i.test(f));
-    const mdlFiles = (item.files || []).filter(f => /\.mdl$/i.test(f));
 
-    // Cap at 100 USD files to keep loading practical
-    const maxFiles = 100;
-    const filesToLoad = usdFiles.slice(0, maxFiles);
-    if (usdFiles.length > maxFiles) {
-      console.warn(`Isaac asset has ${usdFiles.length} USD files, capping at ${maxFiles}`);
+    // Build full paths from the file manifest (same structure as collectAllReferences output)
+    const usdPaths = new Set();
+    const mdlPaths = new Set();
+    for (const relFile of (item.files || [])) {
+      const fullPath = `${assetDir}/${relFile}`;
+      if (/\.(usd|usda|usdc)$/i.test(relFile)) usdPaths.add(fullPath);
+      else if (/\.mdl$/i.test(relFile)) mdlPaths.add(fullPath);
     }
+    // Ensure root asset is included
+    usdPaths.add(assetPath);
 
-    progress.total = filesToLoad.length + mdlFiles.length;
-    report(`Loading ${filesToLoad.length} USD files...`);
+    // Cap at 100 USD files
+    const maxFiles = 100;
+    const allPathsArr = [];
+    for (const path of usdPaths) {
+      if (allPathsArr.length >= maxFiles) break;
+      allPathsArr.push({ path, size: 0 });
+    }
+    // Ensure root file is first
+    allPathsArr.sort((a, b) => {
+      if (a.path === assetPath) return -1;
+      if (b.path === assetPath) return 1;
+      return 0;
+    });
 
-    // Fetch and parse all USD files via proxy
+    progress.total = allPathsArr.length + mdlPaths.size;
+    report(`Loading ${allPathsArr.length} USD + ${mdlPaths.size} MDL files...`);
+
+    // Fetch and parse all USD files — same method as loadFromSimReady
     const assets = {};
     const concurrency = 8;
+    await this._fetchAndParseBatch(
+      allPathsArr.map(p => p.path), assets, assetDir, concurrency, progress, report, proxyBase
+    );
 
-    for (let i = 0; i < filesToLoad.length; i += concurrency) {
-      const batch = filesToLoad.slice(i, i + concurrency);
-      const results = await Promise.allSettled(
-        batch.map(async (relPath) => {
-          const fullPath = `${assetDir}/${relPath}`;
-          const url = `${proxyBase}/${fullPath}`;
-          try {
-            const buffer = await this.fetchFile(url);
-            progress.loaded++;
-            report(`${progress.loaded}/${progress.total}: ${relPath.split('/').pop()}`);
-            return { fullPath, relPath, buffer };
-          } catch (err) {
-            progress.loaded++;
-            console.warn(`Failed to fetch: ${relPath}`, err);
-            return null;
-          }
-        })
-      );
+    // Fetch MDL files — same method as loadFromSimReady
+    const mdlFiles = await this._fetchMDLFiles(mdlPaths, assetDir, concurrency, progress, report, proxyBase);
 
-      for (const result of results) {
-        if (result.status === 'fulfilled' && result.value) {
-          const { fullPath, buffer } = result.value;
-          const parsed = this.parseFileBuffer(buffer, fullPath);
-          if (parsed) {
-            this._storeAsset(assets, fullPath, parsed, assetDir);
-            this.parsedByPath.set(fullPath, parsed);
-          }
-        }
-      }
-    }
-
-    // Fetch MDL files via proxy
-    const mdlData = new Map();
-    for (let i = 0; i < mdlFiles.length; i += concurrency) {
-      const batch = mdlFiles.slice(i, i + concurrency);
-      const results = await Promise.allSettled(
-        batch.map(async (relPath) => {
-          const fullPath = `${assetDir}/${relPath}`;
-          const url = `${proxyBase}/${fullPath}`;
-          try {
-            const resp = await fetch(url);
-            if (!resp.ok) return null;
-            const text = await resp.text();
-            progress.loaded++;
-            report(`${progress.loaded}/${progress.total}: ${relPath.split('/').pop()}`);
-            return { relPath, fullPath, text };
-          } catch {
-            progress.loaded++;
-            return null;
-          }
-        })
-      );
-      for (const r of results) {
-        if (r.status === 'fulfilled' && r.value) {
-          const { relPath, fullPath, text } = r.value;
-          mdlData.set(fullPath, text);
-          mdlData.set(relPath, text);
-          mdlData.set('./' + relPath, text);
-          mdlData.set(relPath.split('/').pop(), text);
-        }
-      }
-    }
-
-    // Compose scene
+    // Compose scene — exact same as loadFromSimReady
     report('Composing scene...');
-    const group = await this._tryCompose(assets, assetPath, assetDir, mdlData);
+    const group = await this._tryCompose(assets, assetPath, assetDir, mdlFiles);
 
     if (!group) {
       throw new Error(`Failed to compose: ${assetPath}`);
     }
 
-    // Apply metersPerUnit scaling
+    // Apply metersPerUnit scaling — exact same as loadFromSimReady
     const meta = this._getLayerMeta(assets, assetPath);
     const wrapper = new THREE.Group();
     wrapper.name = group.name;
@@ -323,19 +285,6 @@ export class SimReadyLoader {
     }
 
     wrapper.add(group);
-
-    // Apply materials with textures loaded through proxy
-    this.materialMapper.textureBaseUrl = proxyBase;
-    try {
-      for (const [path, parsed] of this.parsedByPath) {
-        if (!parsed?.specsByPath) continue;
-        const fileDir = this.dirPath(path);
-        await this.materialMapper.applyMaterials(group, parsed.specsByPath, mdlData, fileDir);
-      }
-    } catch (err) {
-      console.warn('Material application failed:', err);
-    }
-    this.materialMapper.textureBaseUrl = null;
 
     progress.percent = 100;
     report('Done');
@@ -648,7 +597,8 @@ export class SimReadyLoader {
     }
   }
 
-  async _fetchMDLFiles(mdlPaths, assetDir, concurrency, progress, report) {
+  async _fetchMDLFiles(mdlPaths, assetDir, concurrency, progress, report, baseUrl) {
+    const base = baseUrl || S3_BASE;
     const mdlFiles = new Map();
     const mdlPathsArray = [...mdlPaths];
     for (let i = 0; i < mdlPathsArray.length; i += concurrency) {
@@ -656,7 +606,7 @@ export class SimReadyLoader {
       await Promise.allSettled(
         batch.map(async (path) => {
           try {
-            const response = await fetch(`${S3_BASE}/${path}`);
+            const response = await fetch(`${base}/${path}`);
             if (response.ok) {
               const text = await response.text();
               mdlFiles.set(path, text);
@@ -673,13 +623,14 @@ export class SimReadyLoader {
     return mdlFiles;
   }
 
-  async _fetchAndParseBatch(paths, assets, assetDir, concurrency, progress, report) {
+  async _fetchAndParseBatch(paths, assets, assetDir, concurrency, progress, report, baseUrl) {
+    const base = baseUrl || S3_BASE;
     for (let i = 0; i < paths.length; i += concurrency) {
       const batch = paths.slice(i, i + concurrency);
       const results = await Promise.allSettled(
         batch.map(async (path) => {
           try {
-            const buffer = await this.fetchFile(`${S3_BASE}/${path}`);
+            const buffer = await this.fetchFile(`${base}/${path}`);
             progress.loaded++;
             report(`${progress.loaded}/${progress.total}: ${path.split('/').pop()}`);
             return { path, buffer };
