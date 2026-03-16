@@ -1,15 +1,28 @@
 const S3_BASE = 'https://simready.s3.us-east-1.amazonaws.com';
+const ISAAC_S3_BASE = 'https://omniverse-content-staging.s3.amazonaws.com';
 const INDEX_URL = `${S3_BASE}/index.json`;
+const ISAAC_INDEX_URL = '/isaac-assets.json';
+
+// In dev, use Vite proxy to avoid CORS. In production, use direct URL (needs CORS configured).
+const ISAAC_PROXY_BASE = '/isaac-s3';
 
 export class AssetBrowser {
   constructor(app) {
     this.app = app;
     this.items = [];
     this.categories = [];
-    this.activeCategory = 'HuggingFace';
+    this.activeCategory = 'All';
     this.searchQuery = '';
     this.isOpen = false;
-    this.indexLoaded = false;
+
+    // Repository state
+    this.activeRepo = 'simready'; // 'simready' | 'isaac'
+    this.simreadyLoaded = false;
+    this.isaacLoaded = false;
+    this.simreadyItems = [];
+    this.simreadyCategories = [];
+    this.isaacItems = [];
+    this.isaacCategories = [];
 
     this.panel = document.getElementById('asset-browser');
     this.grid = document.getElementById('asset-grid');
@@ -21,15 +34,60 @@ export class AssetBrowser {
       this.renderAssets();
     });
 
+    this._setupRepoTabs();
     this.pendingLoad = null;
+  }
+
+  _setupRepoTabs() {
+    const tabContainer = document.getElementById('repo-tabs');
+    if (!tabContainer) return;
+
+    tabContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-repo]');
+      if (!btn) return;
+
+      const repo = btn.dataset.repo;
+      if (repo === this.activeRepo) return;
+
+      this.activeRepo = repo;
+      tabContainer.querySelectorAll('.repo-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      this.activeCategory = 'All';
+      this.searchQuery = '';
+      this.searchInput.value = '';
+      this._activateRepo();
+    });
+  }
+
+  _activateRepo() {
+    if (this.activeRepo === 'simready') {
+      if (!this.simreadyLoaded) {
+        this.loadSimreadyIndex();
+      } else {
+        this.items = this.simreadyItems;
+        this.categories = this.simreadyCategories;
+        this.renderCategories();
+        this.renderAssets();
+      }
+    } else if (this.activeRepo === 'isaac') {
+      if (!this.isaacLoaded) {
+        this.loadIsaacIndex();
+      } else {
+        this.items = this.isaacItems;
+        this.categories = this.isaacCategories;
+        this.renderCategories();
+        this.renderAssets();
+      }
+    }
   }
 
   async toggle() {
     this.isOpen = !this.isOpen;
     this.panel.classList.toggle('hidden', !this.isOpen);
 
-    if (this.isOpen && !this.indexLoaded) {
-      await this.loadIndex();
+    if (this.isOpen) {
+      this._activateRepo();
     }
   }
 
@@ -38,18 +96,17 @@ export class AssetBrowser {
     this.panel.classList.add('hidden');
   }
 
-  async loadIndex() {
+  async loadSimreadyIndex() {
     if (this.pendingLoad) return this.pendingLoad;
 
     this.grid.innerHTML = `
       <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-dim)">
         <div class="spinner" style="margin:0 auto 12px"></div>
-        Loading asset index (13MB)...
+        Loading SimReady index (13MB)...
       </div>`;
 
     this.pendingLoad = (async () => {
       try {
-        // Share the index with the loader if already cached
         let data;
         if (this.app.loader.indexData) {
           data = this.app.loader.indexData;
@@ -59,45 +116,78 @@ export class AssetBrowser {
           const text = await response.text();
           data = JSON.parse(text.replace(/^\uFEFF/, ''));
           this.app.loader.indexData = data;
-          // Also build index lookup
           this.app.loader.indexByPath = new Map();
           for (const item of data.items) {
             this.app.loader.indexByPath.set(item.path, item);
           }
         }
-        console.log(`Index loaded: ${data.items.length} items`);
-        this.processIndex(data.items);
-        this.indexLoaded = true;
-        this.renderCategories();
-        this.renderAssets();
+        console.log(`SimReady index loaded: ${data.items.length} items`);
+        this._processSimreadyIndex(data.items);
+        this.simreadyLoaded = true;
+
+        if (this.activeRepo === 'simready') {
+          this.items = this.simreadyItems;
+          this.categories = this.simreadyCategories;
+          this.renderCategories();
+          this.renderAssets();
+        }
       } catch (err) {
-        console.error('Failed to load index:', err);
+        console.error('Failed to load SimReady index:', err);
         this.grid.innerHTML = `
           <div style="grid-column:1/-1;text-align:center;padding:40px;color:#ff4757">
-            Failed to load asset index<br>
+            Failed to load SimReady index<br>
             <span style="font-size:11px;color:var(--text-dim)">${err.message}</span>
           </div>`;
+      } finally {
+        this.pendingLoad = null;
       }
     })();
 
     return this.pendingLoad;
   }
 
-  processIndex(rawItems) {
-    // Build thumbnail map: usdPath -> thumbnailPath
+  async loadIsaacIndex() {
+    this.grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-dim)">
+        <div class="spinner" style="margin:0 auto 12px"></div>
+        Loading Isaac SimReady index...
+      </div>`;
+
+    try {
+      const response = await fetch(ISAAC_INDEX_URL);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+
+      console.log(`Isaac index loaded: ${data.count} assets`);
+      this._processIsaacIndex(data.assets);
+      this.isaacLoaded = true;
+
+      if (this.activeRepo === 'isaac') {
+        this.items = this.isaacItems;
+        this.categories = this.isaacCategories;
+        this.renderCategories();
+        this.renderAssets();
+      }
+    } catch (err) {
+      console.error('Failed to load Isaac index:', err);
+      this.grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:40px;color:#ff4757">
+          Failed to load Isaac index<br>
+          <span style="font-size:11px;color:var(--text-dim)">${err.message}</span>
+        </div>`;
+    }
+  }
+
+  _processSimreadyIndex(rawItems) {
     const thumbMap = new Map();
     for (const item of rawItems) {
       if (item.path.includes('.thumbs/256x256/')) {
-        // Thumbnail name is "filename.usd.png" -> USD file is "filename.usd"
         const thumbName = item.name.replace(/\.png$/i, '');
         const dir = item.path.split('/.thumbs/')[0];
         thumbMap.set(`${dir}/${thumbName}`, item.path);
       }
     }
 
-    console.log(`Thumbnails indexed: ${thumbMap.size}`);
-
-    // Build USD asset list — only include root assets that have thumbnails
     const usdFiles = rawItems.filter(item =>
       /\.(usd|usda|usdc)$/i.test(item.path) &&
       !item.path.includes('/SubUSDs/') &&
@@ -108,12 +198,13 @@ export class AssetBrowser {
 
     const categorySet = new Set();
 
-    this.items = usdFiles.map(item => {
+    this.simreadyItems = usdFiles.map(item => {
       const parts = item.path.split('/');
       const category = parts[0];
       categorySet.add(category);
 
       return {
+        repo: 'simready',
         path: item.path,
         name: item.name.replace(/\.(usd|usda|usdc)$/i, ''),
         displayName: item.name
@@ -129,13 +220,34 @@ export class AssetBrowser {
       };
     });
 
-    this.items.sort((a, b) => a.displayName.localeCompare(b.displayName));
-    this.categories = ['All', ...Array.from(categorySet).sort()];
+    this.simreadyItems.sort((a, b) => a.displayName.localeCompare(b.displayName));
+    this.simreadyCategories = ['All', ...Array.from(categorySet).sort()];
+  }
 
-    console.log(`Root assets: ${this.items.length}, categories: ${this.categories.length}`);
+  _processIsaacIndex(assets) {
+    const categorySet = new Set();
+
+    this.isaacItems = assets.map(asset => {
+      categorySet.add(asset.category);
+
+      return {
+        repo: 'isaac',
+        name: asset.name,
+        displayName: asset.displayName,
+        category: asset.category,
+        subCategory: asset.subCategory,
+        glbPath: asset.glbPath,
+        thumbnailPath: asset.thumbnailPath,
+        assetDir: asset.assetDir,
+      };
+    });
+
+    this.isaacItems.sort((a, b) => a.displayName.localeCompare(b.displayName));
+    this.isaacCategories = ['All', ...Array.from(categorySet).sort()];
   }
 
   _formatSize(bytes) {
+    if (!bytes) return '';
     if (bytes < 1024) return `${bytes} B`;
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
@@ -147,7 +259,6 @@ export class AssetBrowser {
       const btn = document.createElement('button');
       btn.className = `category-btn${cat === this.activeCategory ? ' active' : ''}`;
 
-      // Count items in category
       const count = cat === 'All'
         ? this.items.length
         : this.items.filter(i => i.category === cat).length;
@@ -167,8 +278,8 @@ export class AssetBrowser {
       if (this.activeCategory !== 'All' && item.category !== this.activeCategory) return false;
       if (this.searchQuery) {
         const q = this.searchQuery;
-        return item.path.toLowerCase().includes(q) ||
-               item.displayName.toLowerCase().includes(q);
+        const searchFields = (item.path || item.name || '').toLowerCase() + ' ' + item.displayName.toLowerCase();
+        return searchFields.includes(q);
       }
       return true;
     });
@@ -185,22 +296,18 @@ export class AssetBrowser {
     for (const item of filtered) {
       const card = document.createElement('div');
       card.className = 'asset-card';
-      card.title = `${item.path}\n${item.sizeFormatted}`;
 
       const thumbDiv = document.createElement('div');
       thumbDiv.className = 'asset-thumb';
 
-      if (item.thumbnail) {
+      const thumbUrl = this._getThumbnailUrl(item);
+      if (thumbUrl) {
         const img = document.createElement('img');
         img.loading = 'lazy';
         img.alt = item.name;
-        const thumbUrl = `${S3_BASE}/${this._encodeKey(item.thumbnail)}`;
         img.src = thumbUrl;
-        img.onload = () => {
-          img.style.opacity = '1';
-        };
-        img.onerror = (e) => {
-          console.warn('Thumbnail failed:', thumbUrl, e);
+        img.onload = () => { img.style.opacity = '1'; };
+        img.onerror = () => {
           img.style.display = 'none';
           const span = document.createElement('span');
           span.className = 'placeholder';
@@ -214,23 +321,43 @@ export class AssetBrowser {
 
       const infoDiv = document.createElement('div');
       infoDiv.className = 'asset-info';
+      const sizeStr = item.sizeFormatted ? ` &middot; ${item.sizeFormatted}` : '';
       infoDiv.innerHTML = `
         <div class="name">${this._escapeHtml(item.displayName)}</div>
-        <div class="path">${this._escapeHtml(item.subCategory)} &middot; ${item.sizeFormatted}</div>
+        <div class="path">${this._escapeHtml(item.subCategory)}${sizeStr}</div>
       `;
 
       card.appendChild(thumbDiv);
       card.appendChild(infoDiv);
 
       card.addEventListener('click', () => {
-        this.app.loadSimReadyAsset(item.path);
+        if (item.repo === 'isaac') {
+          this.app.loadIsaacAsset(item);
+        } else {
+          this.app.loadSimReadyAsset(item.path);
+        }
         this.close();
       });
+
+      card.title = item.repo === 'isaac'
+        ? `${item.assetDir}\nGLB: ${item.glbPath}`
+        : `${item.path}\n${item.sizeFormatted}`;
 
       fragment.appendChild(card);
     }
 
     this.grid.appendChild(fragment);
+  }
+
+  _getThumbnailUrl(item) {
+    if (item.repo === 'isaac' && item.thumbnailPath) {
+      // Use proxy for Isaac thumbnails (no CORS on bucket)
+      return `${ISAAC_PROXY_BASE}/${this._encodeKey(item.thumbnailPath)}`;
+    }
+    if (item.repo === 'simready' && item.thumbnail) {
+      return `${S3_BASE}/${this._encodeKey(item.thumbnail)}`;
+    }
+    return null;
   }
 
   _escapeHtml(str) {

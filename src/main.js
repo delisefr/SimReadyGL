@@ -1,5 +1,6 @@
 import './style.css';
 import JSZip from 'jszip';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { SceneManager } from './viewer/SceneManager.js';
 import { CameraController } from './viewer/CameraController.js';
 import { SimReadyLoader } from './viewer/SimReadyLoader.js';
@@ -8,6 +9,7 @@ import { AssetBrowser } from './ui/AssetBrowser.js';
 import { UIManager } from './ui/UIManager.js';
 
 const S3_BASE = 'https://simready.s3.us-east-1.amazonaws.com';
+const ISAAC_PROXY_BASE = '/isaac-s3';
 
 class App {
   constructor() {
@@ -17,9 +19,11 @@ class App {
     this.loader = new SimReadyLoader();
     this.physics = new PhysicsManager(this.scene, this.scene.camera, this.canvas);
     this.camera.physicsManager = this.physics;
+    this.gltfLoader = new GLTFLoader();
     this.browser = new AssetBrowser(this);
     this.ui = new UIManager(this);
     this.currentAssetPath = null;
+    this.currentAssetRepo = null;
 
     this.setupDragDrop();
     this.setupURLLoading();
@@ -89,8 +93,50 @@ class App {
     }
   }
 
+  async loadIsaacAsset(item) {
+    this.currentAssetPath = item.glbPath;
+    this.currentAssetRepo = 'isaac';
+    this.ui.showLoading(`Loading ${item.displayName}...`);
+    this.ui.hideTextureProgress();
+
+    try {
+      const glbUrl = `${ISAAC_PROXY_BASE}/${item.glbPath}`;
+      this.ui.updateProgress(20, 'Downloading GLB...');
+
+      const gltf = await new Promise((resolve, reject) => {
+        this.gltfLoader.load(
+          glbUrl,
+          resolve,
+          (xhr) => {
+            if (xhr.lengthComputable) {
+              const pct = 20 + Math.round((xhr.loaded / xhr.total) * 60);
+              this.ui.updateProgress(pct, `Downloading... ${(xhr.loaded / 1024 / 1024).toFixed(1)}MB`);
+            }
+          },
+          reject
+        );
+      });
+
+      this.ui.updateProgress(90, 'Setting up scene...');
+      const group = gltf.scene;
+      this.scene.setModel(group, item.name);
+      this.physics.stop();
+      this.physics.clearBodies();
+      this._resetPhysicsUI();
+      this.camera.focusOnModel();
+      this.ui.setAssetName(item.displayName);
+      this.ui.updateSceneInfo(this.scene);
+    } catch (err) {
+      console.error('Failed to load Isaac asset:', err);
+      this.ui.showError(`Failed to load: ${err.message}`);
+    } finally {
+      this.ui.hideLoading();
+    }
+  }
+
   async loadSimReadyAsset(assetPath) {
     this.currentAssetPath = assetPath;
+    this.currentAssetRepo = 'simready';
     this.ui.showLoading(`Loading ${assetPath.split('/').pop()}...`);
     this.ui.hideTextureProgress();
 
@@ -126,6 +172,11 @@ class App {
 
   async downloadCurrentAsset() {
     if (!this.currentAssetPath) return;
+
+    // Isaac assets: download GLB directly
+    if (this.currentAssetRepo === 'isaac') {
+      return this._downloadIsaacAsset();
+    }
 
     const assetDir = this.loader.dirPath(this.currentAssetPath);
     const assetName = assetDir.split('/').pop();
@@ -221,6 +272,30 @@ class App {
       document.body.removeChild(a);
       URL.revokeObjectURL(a.href);
 
+    } catch (err) {
+      console.error('Download failed:', err);
+      this.ui.showError(`Download failed: ${err.message}`);
+    } finally {
+      this.ui.hideLoading();
+    }
+  }
+
+  async _downloadIsaacAsset() {
+    this.ui.showLoading('Downloading GLB...');
+    try {
+      const glbUrl = `${ISAAC_PROXY_BASE}/${this.currentAssetPath}`;
+      const resp = await fetch(glbUrl);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const blob = await resp.blob();
+      const fileName = this.currentAssetPath.split('/').pop();
+
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
     } catch (err) {
       console.error('Download failed:', err);
       this.ui.showError(`Download failed: ${err.message}`);

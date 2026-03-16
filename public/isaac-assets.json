@@ -1,0 +1,2140 @@
+{
+  "source": "omniverse-content-staging",
+  "prefix": "Assets/Isaac/6.0/Isaac/SimReady/",
+  "count": 237,
+  "assets": [
+    {
+      "name": "Clear_Tape",
+      "displayName": "Clear Tape",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Clear_Tape/web/sm_tape_clear_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Clear_Tape/.thumbs/256x256/sm_tape_clear_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Clear_Tape"
+    },
+    {
+      "name": "Clear_Tape_002",
+      "displayName": "Clear Tape 002",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Clear_Tape_002/web/sm_tape_clear_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Clear_Tape_002/.thumbs/256x256/sm_tape_clear_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Clear_Tape_002"
+    },
+    {
+      "name": "Tape_Dispenser_002",
+      "displayName": "Tape Dispenser 002",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Dispenser_002/web/sm_tape_dispenser_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Dispenser_002/.thumbs/256x256/sm_tape_dispenser_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Dispenser_002"
+    },
+    {
+      "name": "Tape_Dispenser_003",
+      "displayName": "Tape Dispenser 003",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Dispenser_003/web/sm_tape_dispenser_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Dispenser_003/.thumbs/256x256/sm_tape_dispenser_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Dispenser_003"
+    },
+    {
+      "name": "Tape_Transport_Rack",
+      "displayName": "Tape Transport Rack",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Transport_Rack/web/sm_tape_transportRack_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Transport_Rack/.thumbs/256x256/sm_tape_transportRack_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Tape_Transport_Rack"
+    },
+    {
+      "name": "White_Safety_Tape",
+      "displayName": "White Safety Tape",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape/web/sm_tape_safety_white_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape/.thumbs/256x256/sm_tape_safety_white_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape"
+    },
+    {
+      "name": "White_Safety_Tape_2m10cm",
+      "displayName": "White Safety Tape 2m10cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape_2m10cm/web/sm_tape_safety_white_2m10cm_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape_2m10cm/.thumbs/256x256/sm_tape_safety_white_2m10cm_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape_2m10cm"
+    },
+    {
+      "name": "White_Safety_Tape_8m10cm",
+      "displayName": "White Safety Tape 8m10cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape_8m10cm/web/sm_tape_safety_white_8m10cm_b04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape_8m10cm/.thumbs/256x256/sm_tape_safety_white_8m10cm_b04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/White_Safety_Tape_8m10cm"
+    },
+    {
+      "name": "Yellow_Black_Safety_Tape_10m10cm",
+      "displayName": "Yellow Black Safety Tape 10m10cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_10m10cm/web/sm_tape_safety_yellow_black_10m10cm_e05_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_10m10cm/.thumbs/256x256/sm_tape_safety_yellow_black_10m10cm_e05_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_10m10cm"
+    },
+    {
+      "name": "Yellow_Black_Safety_Tape_12m15cm",
+      "displayName": "Yellow Black Safety Tape 12m15cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_12m15cm/web/sm_tape_safety_yellow_black_12m15cm_f06_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_12m15cm/.thumbs/256x256/sm_tape_safety_yellow_black_12m15cm_f06_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_12m15cm"
+    },
+    {
+      "name": "Yellow_Black_Safety_Tape_4m15cm",
+      "displayName": "Yellow Black Safety Tape 4m15cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_4m15cm/web/sm_tape_safety_yellow_black_4m15cm_f02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_4m15cm/.thumbs/256x256/sm_tape_safety_yellow_black_4m15cm_f02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_4m15cm"
+    },
+    {
+      "name": "Yellow_Black_Safety_Tape_8m15cm",
+      "displayName": "Yellow Black Safety Tape 8m15cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_8m15cm/web/sm_tape_safety_yellow_black_8m15cm_f04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_8m15cm/.thumbs/256x256/sm_tape_safety_yellow_black_8m15cm_f04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Black_Safety_Tape_8m15cm"
+    },
+    {
+      "name": "Yellow_Safety_Tape_10m10cm",
+      "displayName": "Yellow Safety Tape 10m10cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_10m10cm/web/sm_tape_safety_yellow_10m10cm_b05_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_10m10cm/.thumbs/256x256/sm_tape_safety_yellow_10m10cm_b05_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_10m10cm"
+    },
+    {
+      "name": "Yellow_Safety_Tape_12m10cm",
+      "displayName": "Yellow Safety Tape 12m10cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_12m10cm/web/sm_tape_safety_yellow_12m10cm_b06_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_12m10cm/.thumbs/256x256/sm_tape_safety_yellow_12m10cm_b06_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_12m10cm"
+    },
+    {
+      "name": "Yellow_Safety_Tape_2m5cm",
+      "displayName": "Yellow Safety Tape 2m5cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_2m5cm/web/sm_tape_safety_yellow_2m5cm_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_2m5cm/.thumbs/256x256/sm_tape_safety_yellow_2m5cm_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_2m5cm"
+    },
+    {
+      "name": "Yellow_Safety_Tape_4m10cm",
+      "displayName": "Yellow Safety Tape 4m10cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_4m10cm/web/sm_tape_safety_yellow_4m10cm_b02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_4m10cm/.thumbs/256x256/sm_tape_safety_yellow_4m10cm_b02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_4m10cm"
+    },
+    {
+      "name": "Yellow_Safety_Tape_4m5cm",
+      "displayName": "Yellow Safety Tape 4m5cm",
+      "category": "Industrial",
+      "subCategory": "Hardware/Tapes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_4m5cm/web/sm_tape_safety_yellow_4m5cm_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_4m5cm/.thumbs/256x256/sm_tape_safety_yellow_4m5cm_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Hardware/Tapes/Yellow_Safety_Tape_4m5cm"
+    },
+    {
+      "name": "Large_Tool_Box",
+      "displayName": "Large Tool Box",
+      "category": "Industrial",
+      "subCategory": "Tools/Hand",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Tools/Hand/Large_Tool_Box/web/sm_obs_electricians_large_tool_box_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Tools/Hand/Large_Tool_Box/.thumbs/256x256/sm_obs_electricians_large_tool_box_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Tools/Hand/Large_Tool_Box"
+    },
+    {
+      "name": "Small_Sledge_Hammer",
+      "displayName": "Small Sledge Hammer",
+      "category": "Industrial",
+      "subCategory": "Tools/Hand",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Tools/Hand/Small_Sledge_Hammer/web/sm_obs_small_sledge_hammer_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Tools/Hand/Small_Sledge_Hammer/.thumbs/256x256/sm_obs_small_sledge_hammer_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Tools/Hand/Small_Sledge_Hammer"
+    },
+    {
+      "name": "Corner_Rail",
+      "displayName": "Corner Rail",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Corner_Rail/web/sm_rail_corner_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Corner_Rail/.thumbs/256x256/sm_rail_corner_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Corner_Rail"
+    },
+    {
+      "name": "Guard_Rail",
+      "displayName": "Guard Rail",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Guard_Rail/web/sm_rail_guard_a09_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Guard_Rail/.thumbs/256x256/sm_rail_guard_a09_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Guard_Rail"
+    },
+    {
+      "name": "Long_Ramp",
+      "displayName": "Long Ramp",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Long_Ramp/web/sm_ramp_long_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Long_Ramp/.thumbs/256x256/sm_ramp_long_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Long_Ramp"
+    },
+    {
+      "name": "Mobile_Shutoff_Safety",
+      "displayName": "Mobile Shutoff Safety",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety/web/sm_safety_mobileShutoff_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety/.thumbs/256x256/sm_safety_mobileShutoff_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety"
+    },
+    {
+      "name": "Mobile_Shutoff_Safety_002",
+      "displayName": "Mobile Shutoff Safety 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety_002/web/sm_safety_mobileShutoff_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety_002/.thumbs/256x256/sm_safety_mobileShutoff_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety_002"
+    },
+    {
+      "name": "Mobile_Shutoff_Safety_003",
+      "displayName": "Mobile Shutoff Safety 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety_003/web/sm_safety_mobileShutoff_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety_003/.thumbs/256x256/sm_safety_mobileShutoff_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Mobile_Shutoff_Safety_003"
+    },
+    {
+      "name": "Safety_Gate_Barrier",
+      "displayName": "Safety Gate Barrier",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Barriers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Safety_Gate_Barrier/web/sm_barrier_gate_safety_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Safety_Gate_Barrier/.thumbs/256x256/sm_barrier_gate_safety_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Barriers/Safety_Gate_Barrier"
+    },
+    {
+      "name": "Brown_Cube_Box",
+      "displayName": "Brown Cube Box",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Brown_Cube_Box/web/sm_box_cube_brown_b04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Brown_Cube_Box/.thumbs/256x256/sm_box_cube_brown_b04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Brown_Cube_Box"
+    },
+    {
+      "name": "Cardboard_Box_007",
+      "displayName": "Cardboard Box 007",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_007/web/sm_box_cardboard_b03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_007/.thumbs/256x256/sm_box_cardboard_b03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_007"
+    },
+    {
+      "name": "Cardboard_Box_010",
+      "displayName": "Cardboard Box 010",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_010/web/sm_box_cardboard_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_010/.thumbs/256x256/sm_box_cardboard_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_010"
+    },
+    {
+      "name": "Cardboard_Box_011",
+      "displayName": "Cardboard Box 011",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_011/web/sm_box_cardboard_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_011/.thumbs/256x256/sm_box_cardboard_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_011"
+    },
+    {
+      "name": "Cardboard_Box_012",
+      "displayName": "Cardboard Box 012",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_012/web/sm_box_cardboard_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_012/.thumbs/256x256/sm_box_cardboard_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cardboard_Box_012"
+    },
+    {
+      "name": "Case",
+      "displayName": "Case",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case/web/sm_case_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case/.thumbs/256x256/sm_case_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case"
+    },
+    {
+      "name": "Case_002",
+      "displayName": "Case 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case_002/web/sm_case_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case_002/.thumbs/256x256/sm_case_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case_002"
+    },
+    {
+      "name": "Case_003",
+      "displayName": "Case 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case_003/web/sm_case_c02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case_003/.thumbs/256x256/sm_case_c02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Case_003"
+    },
+    {
+      "name": "Cube_Box",
+      "displayName": "Cube Box",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box/web/sm_warehouse_box_cube_a10_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box/.thumbs/256x256/sm_warehouse_box_cube_a10_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box"
+    },
+    {
+      "name": "Cube_Box_002",
+      "displayName": "Cube Box 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box_002/web/sm_warehouse_box_cube_a07_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box_002/.thumbs/256x256/sm_warehouse_box_cube_a07_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box_002"
+    },
+    {
+      "name": "Cube_Box_003",
+      "displayName": "Cube Box 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box_003/web/sm_box_cube_a10_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box_003/.thumbs/256x256/sm_box_cube_a10_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Cube_Box_003"
+    },
+    {
+      "name": "Gray_Office_Paper_Pack",
+      "displayName": "Gray Office Paper Pack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Gray_Office_Paper_Pack/web/sm_pack_paper_office_gray_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Gray_Office_Paper_Pack/.thumbs/256x256/sm_pack_paper_office_gray_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Gray_Office_Paper_Pack"
+    },
+    {
+      "name": "Paper_Roll",
+      "displayName": "Paper Roll",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Paper_Roll/web/sm_paper_roll_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Paper_Roll/.thumbs/256x256/sm_paper_roll_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/Paper_Roll"
+    },
+    {
+      "name": "White_Corrugated_Box_022",
+      "displayName": "White Corrugated Box 022",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/White_Corrugated_Box_022/web/sm_box_corrugated_white_a09_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/White_Corrugated_Box_022/.thumbs/256x256/sm_box_corrugated_white_a09_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/White_Corrugated_Box_022"
+    },
+    {
+      "name": "White_Cube_Box",
+      "displayName": "White Cube Box",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Boxes",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/White_Cube_Box/web/sm_box_cube_white_b05_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/White_Cube_Box/.thumbs/256x256/sm_box_cube_white_b05_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Boxes/White_Cube_Box"
+    },
+    {
+      "name": "Beige_Office_Trash_Can",
+      "displayName": "Beige Office Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Beige_Office_Trash_Can/web/sm_trashCan_office_beige_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Beige_Office_Trash_Can/.thumbs/256x256/sm_trashCan_office_beige_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Beige_Office_Trash_Can"
+    },
+    {
+      "name": "Black_Container",
+      "displayName": "Black Container",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Container/web/sm_container_black_c04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Container/.thumbs/256x256/sm_container_black_c04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Container"
+    },
+    {
+      "name": "Black_Crate",
+      "displayName": "Black Crate",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate/web/sm_crate_black_a14_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate/.thumbs/256x256/sm_crate_black_a14_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate"
+    },
+    {
+      "name": "Black_Crate_002",
+      "displayName": "Black Crate 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate_002/web/sm_crate_black_a08_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate_002/.thumbs/256x256/sm_crate_black_a08_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate_002"
+    },
+    {
+      "name": "Black_Crate_003",
+      "displayName": "Black Crate 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate_003/web/sm_crate_black_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate_003/.thumbs/256x256/sm_crate_black_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Crate_003"
+    },
+    {
+      "name": "Black_Office_Trash_Can",
+      "displayName": "Black Office Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Office_Trash_Can/web/sm_trashCan_office_black_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Office_Trash_Can/.thumbs/256x256/sm_trashCan_office_black_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Office_Trash_Can"
+    },
+    {
+      "name": "Black_Wheeled_Trash_Can",
+      "displayName": "Black Wheeled Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Wheeled_Trash_Can/web/sm_trashCan_wheeled_black_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Wheeled_Trash_Can/.thumbs/256x256/sm_trashCan_wheeled_black_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Black_Wheeled_Trash_Can"
+    },
+    {
+      "name": "Blue_Crate",
+      "displayName": "Blue Crate",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate/web/sm_crate_blue_a08_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate/.thumbs/256x256/sm_crate_blue_a08_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate"
+    },
+    {
+      "name": "Blue_Crate_002",
+      "displayName": "Blue Crate 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate_002/web/sm_crate_blue_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate_002/.thumbs/256x256/sm_crate_blue_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate_002"
+    },
+    {
+      "name": "Blue_Crate_003",
+      "displayName": "Blue Crate 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate_003/web/sm_crate_blue_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate_003/.thumbs/256x256/sm_crate_blue_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Crate_003"
+    },
+    {
+      "name": "Blue_Domed_Trash_Can",
+      "displayName": "Blue Domed Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Domed_Trash_Can/web/sm_trashCan_domed_blue_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Domed_Trash_Can/.thumbs/256x256/sm_trashCan_domed_blue_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Blue_Domed_Trash_Can"
+    },
+    {
+      "name": "Double_Bench_Storage_Locker",
+      "displayName": "Double Bench Storage Locker",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Double_Bench_Storage_Locker/web/sm_storage_locker_double_bench_b03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Double_Bench_Storage_Locker/.thumbs/256x256/sm_storage_locker_double_bench_b03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Double_Bench_Storage_Locker"
+    },
+    {
+      "name": "Double_Bench_Storage_Locker_002",
+      "displayName": "Double Bench Storage Locker 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Double_Bench_Storage_Locker_002/web/sm_storage_locker_double_bench_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Double_Bench_Storage_Locker_002/.thumbs/256x256/sm_storage_locker_double_bench_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Double_Bench_Storage_Locker_002"
+    },
+    {
+      "name": "Fire_Resistant_Trash_Can",
+      "displayName": "Fire Resistant Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Fire_Resistant_Trash_Can/web/sm_trashCan_fireResistant_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Fire_Resistant_Trash_Can/.thumbs/256x256/sm_trashCan_fireResistant_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Fire_Resistant_Trash_Can"
+    },
+    {
+      "name": "Gray_Crate",
+      "displayName": "Gray Crate",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate/web/sm_crate_gray_a20_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate/.thumbs/256x256/sm_crate_gray_a20_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate"
+    },
+    {
+      "name": "Gray_Crate_002",
+      "displayName": "Gray Crate 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate_002/web/sm_crate_gray_a14_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate_002/.thumbs/256x256/sm_crate_gray_a14_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate_002"
+    },
+    {
+      "name": "Gray_Crate_003",
+      "displayName": "Gray Crate 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate_003/web/sm_crate_gray_a08_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate_003/.thumbs/256x256/sm_crate_gray_a08_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Crate_003"
+    },
+    {
+      "name": "Gray_Office_Trash_Can",
+      "displayName": "Gray Office Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Office_Trash_Can/web/sm_trashCan_office_gray_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Office_Trash_Can/.thumbs/256x256/sm_trashCan_office_gray_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Office_Trash_Can"
+    },
+    {
+      "name": "Gray_Tilt_Truck",
+      "displayName": "Gray Tilt Truck",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Tilt_Truck/web/sm_tiltTruck_gray_a05_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Tilt_Truck/.thumbs/256x256/sm_tiltTruck_gray_a05_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Tilt_Truck"
+    },
+    {
+      "name": "Gray_Tilt_Truck_002",
+      "displayName": "Gray Tilt Truck 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Tilt_Truck_002/web/sm_tiltTruck_gray_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Tilt_Truck_002/.thumbs/256x256/sm_tiltTruck_gray_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Tilt_Truck_002"
+    },
+    {
+      "name": "Gray_Utility_Bucket_002",
+      "displayName": "Gray Utility Bucket 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Utility_Bucket_002/web/sm_bucket_utility_gray_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Utility_Bucket_002/.thumbs/256x256/sm_bucket_utility_gray_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Gray_Utility_Bucket_002"
+    },
+    {
+      "name": "Green_Crate_002",
+      "displayName": "Green Crate 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Crate_002/web/sm_crate_green_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Crate_002/.thumbs/256x256/sm_crate_green_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Crate_002"
+    },
+    {
+      "name": "Green_Crate_003",
+      "displayName": "Green Crate 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Crate_003/web/sm_crate_green_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Crate_003/.thumbs/256x256/sm_crate_green_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Crate_003"
+    },
+    {
+      "name": "Green_Recycle_Container_004",
+      "displayName": "Green Recycle Container 004",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Recycle_Container_004/web/sm_container_recycle_green_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Recycle_Container_004/.thumbs/256x256/sm_container_recycle_green_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Recycle_Container_004"
+    },
+    {
+      "name": "Green_Wheeled_Trash_Can",
+      "displayName": "Green Wheeled Trash Can",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Wheeled_Trash_Can/web/sm_trashCan_wheeled_green_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Wheeled_Trash_Can/.thumbs/256x256/sm_trashCan_wheeled_green_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Green_Wheeled_Trash_Can"
+    },
+    {
+      "name": "Orange_Container",
+      "displayName": "Orange Container",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Orange_Container/web/sm_container_orange_c04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Orange_Container/.thumbs/256x256/sm_container_orange_c04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Orange_Container"
+    },
+    {
+      "name": "Red_Crate",
+      "displayName": "Red Crate",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Crate/web/sm_crate_red_a19_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Crate/.thumbs/256x256/sm_crate_red_a19_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Crate"
+    },
+    {
+      "name": "Red_Crate_002",
+      "displayName": "Red Crate 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Crate_002/web/sm_crate_red_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Crate_002/.thumbs/256x256/sm_crate_red_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Crate_002"
+    },
+    {
+      "name": "Red_Screw_Top_Pail",
+      "displayName": "Red Screw Top Pail",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Screw_Top_Pail/web/sm_pail_screwTop_red_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Screw_Top_Pail/.thumbs/256x256/sm_pail_screwTop_red_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Screw_Top_Pail"
+    },
+    {
+      "name": "Red_Tilt_Truck",
+      "displayName": "Red Tilt Truck",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Tilt_Truck/web/sm_tiltTruck_red_a04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Tilt_Truck/.thumbs/256x256/sm_tiltTruck_red_a04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Red_Tilt_Truck"
+    },
+    {
+      "name": "Trash_Bin",
+      "displayName": "Trash Bin",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin/web/sm_trash_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin/.thumbs/256x256/sm_trash_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin"
+    },
+    {
+      "name": "Trash_Bin_002",
+      "displayName": "Trash Bin 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin_002/web/sm_trash_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin_002/.thumbs/256x256/sm_trash_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin_002"
+    },
+    {
+      "name": "Trash_Bin_003",
+      "displayName": "Trash Bin 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Containers",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin_003/web/sm_trash_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin_003/.thumbs/256x256/sm_trash_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Containers/Trash_Bin_003"
+    },
+    {
+      "name": "ABC_Fire_Extinguisher",
+      "displayName": "ABC Fire Extinguisher",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/ABC_Fire_Extinguisher/web/sm_fireExtinguisher_abc_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/ABC_Fire_Extinguisher/.thumbs/256x256/sm_fireExtinguisher_abc_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/ABC_Fire_Extinguisher"
+    },
+    {
+      "name": "Aluminum_Convertible_Hand_Truck_002",
+      "displayName": "Aluminum Convertible Hand Truck 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Aluminum_Convertible_Hand_Truck_002/web/sm_handTruck_convertible_aluminum_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Aluminum_Convertible_Hand_Truck_002/.thumbs/256x256/sm_handTruck_convertible_aluminum_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Aluminum_Convertible_Hand_Truck_002"
+    },
+    {
+      "name": "Blue_Forklift",
+      "displayName": "Blue Forklift",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Blue_Forklift/web/sm_vehicle_forklift_blue_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Blue_Forklift/.thumbs/256x256/sm_vehicle_forklift_blue_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Blue_Forklift"
+    },
+    {
+      "name": "Blue_Forklift_002",
+      "displayName": "Blue Forklift 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Blue_Forklift_002/web/sm_vehicle_forklift_blue_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Blue_Forklift_002/.thumbs/256x256/sm_vehicle_forklift_blue_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Blue_Forklift_002"
+    },
+    {
+      "name": "Cleaning_Trolley",
+      "displayName": "Cleaning Trolley",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Cleaning_Trolley/web/sm_trolley_cleaning_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Cleaning_Trolley/.thumbs/256x256/sm_trolley_cleaning_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Cleaning_Trolley"
+    },
+    {
+      "name": "Cleaning_Trolley_002",
+      "displayName": "Cleaning Trolley 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Cleaning_Trolley_002/web/sm_trolley_cleaning_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Cleaning_Trolley_002/.thumbs/256x256/sm_trolley_cleaning_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Cleaning_Trolley_002"
+    },
+    {
+      "name": "Computer_Keyboard",
+      "displayName": "Computer Keyboard",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Computer_Keyboard/web/sm_warehouse_computer_keyboard_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Computer_Keyboard/.thumbs/256x256/sm_warehouse_computer_keyboard_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Computer_Keyboard"
+    },
+    {
+      "name": "Deluxe_Packing_Table",
+      "displayName": "Deluxe Packing Table",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Deluxe_Packing_Table/web/sm_table_deluxe_packing_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Deluxe_Packing_Table/.thumbs/256x256/sm_table_deluxe_packing_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Deluxe_Packing_Table"
+    },
+    {
+      "name": "Heavy_Duty_Packing_Table",
+      "displayName": "Heavy Duty Packing Table",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Heavy_Duty_Packing_Table/web/sm_table_packing_heavyduty_c02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Heavy_Duty_Packing_Table/.thumbs/256x256/sm_table_packing_heavyduty_c02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Heavy_Duty_Packing_Table"
+    },
+    {
+      "name": "Heavy_Duty_Packing_Table_002",
+      "displayName": "Heavy Duty Packing Table 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Heavy_Duty_Packing_Table_002/web/sm_table_packing_heavyduty_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Heavy_Duty_Packing_Table_002/.thumbs/256x256/sm_table_packing_heavyduty_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Heavy_Duty_Packing_Table_002"
+    },
+    {
+      "name": "Metal_Table",
+      "displayName": "Metal Table",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Metal_Table/web/sm_table_metal_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Metal_Table/.thumbs/256x256/sm_table_metal_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Metal_Table"
+    },
+    {
+      "name": "Office_Mouse",
+      "displayName": "Office Mouse",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Office_Mouse/web/sm_computer_mouse_office_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Office_Mouse/.thumbs/256x256/sm_computer_mouse_office_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Office_Mouse"
+    },
+    {
+      "name": "Red_Forklift_002",
+      "displayName": "Red Forklift 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Red_Forklift_002/web/sm_vehicle_forklift_red_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Red_Forklift_002/.thumbs/256x256/sm_vehicle_forklift_red_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Red_Forklift_002"
+    },
+    {
+      "name": "Rolling_Steel_Scaffold",
+      "displayName": "Rolling Steel Scaffold",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Rolling_Steel_Scaffold/web/sm_scaffold_rolling_steel_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Rolling_Steel_Scaffold/.thumbs/256x256/sm_scaffold_rolling_steel_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Rolling_Steel_Scaffold"
+    },
+    {
+      "name": "Rolling_Steel_Scaffold_002",
+      "displayName": "Rolling Steel Scaffold 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Rolling_Steel_Scaffold_002/web/sm_scaffold_rolling_steel_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Rolling_Steel_Scaffold_002/.thumbs/256x256/sm_scaffold_rolling_steel_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Rolling_Steel_Scaffold_002"
+    },
+    {
+      "name": "Stainless_Steel_Metal_Table",
+      "displayName": "Stainless Steel Metal Table",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Stainless_Steel_Metal_Table/web/sm_table_metal_stainless_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Stainless_Steel_Metal_Table/.thumbs/256x256/sm_table_metal_stainless_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Stainless_Steel_Metal_Table"
+    },
+    {
+      "name": "Water_Cooler",
+      "displayName": "Water Cooler",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Water_Cooler/web/sm_water_cooler_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Water_Cooler/.thumbs/256x256/sm_water_cooler_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Water_Cooler"
+    },
+    {
+      "name": "Wheel_Base_Trolley",
+      "displayName": "Wheel Base Trolley",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Equipment",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Wheel_Base_Trolley/web/sm_trolley_wheelBase_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Wheel_Base_Trolley/.thumbs/256x256/sm_trolley_wheelBase_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Equipment/Wheel_Base_Trolley"
+    },
+    {
+      "name": "Black_Office_Chair",
+      "displayName": "Black Office Chair",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Furniture",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Furniture/Black_Office_Chair/web/sm_warehouse_chair_office_amf_black_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Furniture/Black_Office_Chair/.thumbs/256x256/sm_warehouse_chair_office_amf_black_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Furniture/Black_Office_Chair"
+    },
+    {
+      "name": "Mobile_Padded_Vinyl_Stool",
+      "displayName": "Mobile Padded Vinyl Stool",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Furniture",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Furniture/Mobile_Padded_Vinyl_Stool/web/sm_stool_mobile_padded_vinyl_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Furniture/Mobile_Padded_Vinyl_Stool/.thumbs/256x256/sm_stool_mobile_padded_vinyl_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Furniture/Mobile_Padded_Vinyl_Stool"
+    },
+    {
+      "name": "Pallet_002",
+      "displayName": "Pallet 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Pallets",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Pallet_002/web/sm_pallet_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Pallet_002/.thumbs/256x256/sm_pallet_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Pallet_002"
+    },
+    {
+      "name": "Pallet_003",
+      "displayName": "Pallet 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Pallets",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Pallet_003/web/sm_pallet_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Pallet_003/.thumbs/256x256/sm_pallet_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Pallet_003"
+    },
+    {
+      "name": "Recycled_Wood_Drum_Pallet_002",
+      "displayName": "Recycled Wood Drum Pallet 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Pallets",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Recycled_Wood_Drum_Pallet_002/web/sm_pallet_drum_wood_recycled_a06_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Recycled_Wood_Drum_Pallet_002/.thumbs/256x256/sm_pallet_drum_wood_recycled_a06_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Pallets/Recycled_Wood_Drum_Pallet_002"
+    },
+    {
+      "name": "3m_S01_Rack",
+      "displayName": "3m S01 Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/3m_S01_Rack/web/sm_rack_h3m_s01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/3m_S01_Rack/.thumbs/256x256/sm_rack_h3m_s01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/3m_S01_Rack"
+    },
+    {
+      "name": "3m_S02_Rack",
+      "displayName": "3m S02 Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/3m_S02_Rack/web/sm_rack_h3m_s02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/3m_S02_Rack/.thumbs/256x256/sm_rack_h3m_s02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/3m_S02_Rack"
+    },
+    {
+      "name": "A04_Rack_Composition",
+      "displayName": "A04 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A04_Rack_Composition/web/sm_rack_composition_a04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A04_Rack_Composition/.thumbs/256x256/sm_rack_composition_a04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A04_Rack_Composition"
+    },
+    {
+      "name": "A05_Rack_Composition",
+      "displayName": "A05 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A05_Rack_Composition/web/sm_rack_composition_a05_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A05_Rack_Composition/.thumbs/256x256/sm_rack_composition_a05_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A05_Rack_Composition"
+    },
+    {
+      "name": "A06_Rack_Composition",
+      "displayName": "A06 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A06_Rack_Composition/web/sm_rack_composition_a06_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A06_Rack_Composition/.thumbs/256x256/sm_rack_composition_a06_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A06_Rack_Composition"
+    },
+    {
+      "name": "A08_Rack_Composition",
+      "displayName": "A08 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A08_Rack_Composition/web/sm_rack_composition_a08_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A08_Rack_Composition/.thumbs/256x256/sm_rack_composition_a08_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A08_Rack_Composition"
+    },
+    {
+      "name": "A20_Rack_Composition",
+      "displayName": "A20 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A20_Rack_Composition/web/sm_rack_composition_a20_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A20_Rack_Composition/.thumbs/256x256/sm_rack_composition_a20_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/A20_Rack_Composition"
+    },
+    {
+      "name": "Bulk_Storage_Rack",
+      "displayName": "Bulk Storage Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Bulk_Storage_Rack/web/sm_rack_bulk_storage_a03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Bulk_Storage_Rack/.thumbs/256x256/sm_rack_bulk_storage_a03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Bulk_Storage_Rack"
+    },
+    {
+      "name": "F04_Rack",
+      "displayName": "F04 Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/F04_Rack/web/sm_rack_f04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/F04_Rack/.thumbs/256x256/sm_rack_f04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/F04_Rack"
+    },
+    {
+      "name": "F10_Rack",
+      "displayName": "F10 Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/F10_Rack/web/sm_rack_f10_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/F10_Rack/.thumbs/256x256/sm_rack_f10_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/F10_Rack"
+    },
+    {
+      "name": "Heavy_Duty_Steel_Shelves",
+      "displayName": "Heavy Duty Steel Shelves",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Heavy_Duty_Steel_Shelves/web/sm_shelve_steel_heavyDuty_a06_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Heavy_Duty_Steel_Shelves/.thumbs/256x256/sm_shelve_steel_heavyDuty_a06_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Heavy_Duty_Steel_Shelves"
+    },
+    {
+      "name": "L03_Rack_Composition",
+      "displayName": "L03 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L03_Rack_Composition/web/sm_rack_composition_l03_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L03_Rack_Composition/.thumbs/256x256/sm_rack_composition_l03_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L03_Rack_Composition"
+    },
+    {
+      "name": "L04_Rack_Composition",
+      "displayName": "L04 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L04_Rack_Composition/web/sm_rack_composition_l04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L04_Rack_Composition/.thumbs/256x256/sm_rack_composition_l04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L04_Rack_Composition"
+    },
+    {
+      "name": "L05_Rack_Composition",
+      "displayName": "L05 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L05_Rack_Composition/web/sm_rack_composition_l05_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L05_Rack_Composition/.thumbs/256x256/sm_rack_composition_l05_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L05_Rack_Composition"
+    },
+    {
+      "name": "L06_Rack_Composition",
+      "displayName": "L06 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L06_Rack_Composition/web/sm_rack_composition_l06_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L06_Rack_Composition/.thumbs/256x256/sm_rack_composition_l06_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L06_Rack_Composition"
+    },
+    {
+      "name": "L07_Rack_Composition",
+      "displayName": "L07 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L07_Rack_Composition/web/sm_rack_composition_l07_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L07_Rack_Composition/.thumbs/256x256/sm_rack_composition_l07_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L07_Rack_Composition"
+    },
+    {
+      "name": "L08_Rack_Composition",
+      "displayName": "L08 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L08_Rack_Composition/web/sm_rack_composition_l08_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L08_Rack_Composition/.thumbs/256x256/sm_rack_composition_l08_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L08_Rack_Composition"
+    },
+    {
+      "name": "L09_Rack_Composition",
+      "displayName": "L09 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L09_Rack_Composition/web/sm_rack_composition_l09_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L09_Rack_Composition/.thumbs/256x256/sm_rack_composition_l09_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L09_Rack_Composition"
+    },
+    {
+      "name": "L10_Rack_Composition",
+      "displayName": "L10 Rack Composition",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L10_Rack_Composition/web/sm_rack_composition_l10_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L10_Rack_Composition/.thumbs/256x256/sm_rack_composition_l10_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L10_Rack_Composition"
+    },
+    {
+      "name": "L16_Rack",
+      "displayName": "L16 Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L16_Rack/web/sm_rack_l16_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L16_Rack/.thumbs/256x256/sm_rack_l16_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/L16_Rack"
+    },
+    {
+      "name": "Large_Empty_Rack_002",
+      "displayName": "Large Empty Rack 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Large_Empty_Rack_002/web/sm_rack_large_empty_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Large_Empty_Rack_002/.thumbs/256x256/sm_rack_large_empty_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Large_Empty_Rack_002"
+    },
+    {
+      "name": "Long_Empty_Rack",
+      "displayName": "Long Empty Rack",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Racks",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Long_Empty_Rack/web/sm_rack_long_empty_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Long_Empty_Rack/.thumbs/256x256/sm_rack_long_empty_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Racks/Long_Empty_Rack"
+    },
+    {
+      "name": "Movable_Floor_Sign",
+      "displayName": "Movable Floor Sign",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Signs",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Movable_Floor_Sign/web/sm_sign_floor_movable_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Movable_Floor_Sign/.thumbs/256x256/sm_sign_floor_movable_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Movable_Floor_Sign"
+    },
+    {
+      "name": "Warning_Sign",
+      "displayName": "Warning Sign",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Signs",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Warning_Sign/web/sm_sign_warning_a04_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Warning_Sign/.thumbs/256x256/sm_sign_warning_a04_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Warning_Sign"
+    },
+    {
+      "name": "Wet_Floor_Sign",
+      "displayName": "Wet Floor Sign",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Signs",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign/web/sm_wet_floor_sign_b02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign/.thumbs/256x256/sm_sign_wetFloor_b02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign"
+    },
+    {
+      "name": "Wet_Floor_Sign_002",
+      "displayName": "Wet Floor Sign 002",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Signs",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign_002/web/sm_wet_floor_sign_a02_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign_002/.thumbs/256x256/sm_sign_wetFloor_a02_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign_002"
+    },
+    {
+      "name": "Wet_Floor_Sign_003",
+      "displayName": "Wet Floor Sign 003",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Signs",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign_003/web/sm_wet_floor_sign_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign_003/.thumbs/256x256/sm_sign_wetFloor_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Signs/Wet_Floor_Sign_003"
+    },
+    {
+      "name": "Warehouse_Test_Cube",
+      "displayName": "Warehouse Test Cube",
+      "category": "Industrial",
+      "subCategory": "Warehouse/Structures",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Structures/Warehouse_Test_Cube/web/sm_warehouse_cube_test_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Structures/Warehouse_Test_Cube/.thumbs/256x256/sm_warehouse_cube_test_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Industrial/Warehouse/Structures/Warehouse_Test_Cube"
+    },
+    {
+      "name": "Oven",
+      "displayName": "Oven",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Appliances",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Appliances/Oven/web/sm_rc_appliance_oven_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Appliances/Oven/.thumbs/256x256/sm_rc_appliance_oven_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Appliances/Oven"
+    },
+    {
+      "name": "Refrigerator",
+      "displayName": "Refrigerator",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Appliances",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Appliances/Refrigerator/web/sm_rc_appliance_refrigerator_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Appliances/Refrigerator/.thumbs/256x256/sm_rc_appliance_refrigerator_a01_01_flat.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Appliances/Refrigerator"
+    },
+    {
+      "name": "Mini_Plastic_Storage_Basket",
+      "displayName": "Mini Plastic Storage Basket",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Baskets",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Baskets/Mini_Plastic_Storage_Basket/web/sm_rc_storage_basket_plastic_mini_v01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Baskets/Mini_Plastic_Storage_Basket/.thumbs/256x256/sm_rc_storage_basket_plastic_mini_v01_FLAT.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Baskets/Mini_Plastic_Storage_Basket"
+    },
+    {
+      "name": "Cabinet",
+      "displayName": "Cabinet",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Cabinets",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Cabinets/Cabinet/web/fixture_cabinet_k01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Cabinets/Cabinet/.thumbs/256x256/fixture_cabinet_k01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Cabinets/Cabinet"
+    },
+    {
+      "name": "Sink_Basin",
+      "displayName": "Sink Basin",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Fixtures",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Fixtures/Sink_Basin/web/rc_fixture_sink_basin_a.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Fixtures/Sink_Basin/.thumbs/256x256/rc_fixture_sink_basin_a.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Fixtures/Sink_Basin"
+    },
+    {
+      "name": "Dish_Wand",
+      "displayName": "Dish Wand",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Cleaning_Supplies",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Cleaning_Supplies/Dish_Wand/web/gen_cleaning_dishwand_v01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Cleaning_Supplies/Dish_Wand/.thumbs/256x256/gen_cleaning_dishwand_v01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Cleaning_Supplies/Dish_Wand"
+    },
+    {
+      "name": "Bowl",
+      "displayName": "Bowl",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl/web/objaverse_kitchenware_utensil_bowl_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl/.thumbs/256x256/objaverse_Kitchenware_utensil_bowl_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl"
+    },
+    {
+      "name": "Bowl_002",
+      "displayName": "Bowl 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_002/web/sm_kitchenware_bowl_s01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_002/.thumbs/256x256/sm_kitchenware_bowl_s01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_002"
+    },
+    {
+      "name": "Bowl_003",
+      "displayName": "Bowl 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_003/web/sm_kitchenware_bowl_r01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_003/.thumbs/256x256/sm_kitchenware_bowl_r01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_003"
+    },
+    {
+      "name": "Bowl_004",
+      "displayName": "Bowl 004",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_004/web/sm_kitchenware_bowl_q01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_004/.thumbs/256x256/sm_kitchenware_bowl_q01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_004"
+    },
+    {
+      "name": "Bowl_005",
+      "displayName": "Bowl 005",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_005/web/sm_kitchenware_bowl_p01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_005/.thumbs/256x256/sm_kitchenware_bowl_p01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_005"
+    },
+    {
+      "name": "Bowl_006",
+      "displayName": "Bowl 006",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_006/web/sm_kitchenware_bowl_o01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_006/.thumbs/256x256/sm_kitchenware_bowl_o01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_006"
+    },
+    {
+      "name": "Bowl_007",
+      "displayName": "Bowl 007",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_007/web/sm_kitchenware_bowl_n01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_007/.thumbs/256x256/sm_kitchenware_bowl_n01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_007"
+    },
+    {
+      "name": "Bowl_008",
+      "displayName": "Bowl 008",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_008/web/sm_kitchenware_bowl_m01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_008/.thumbs/256x256/sm_kitchenware_bowl_m01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_008"
+    },
+    {
+      "name": "Bowl_009",
+      "displayName": "Bowl 009",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_009/web/sm_kitchenware_bowl_l01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_009/.thumbs/256x256/sm_kitchenware_bowl_l01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_009"
+    },
+    {
+      "name": "Bowl_010",
+      "displayName": "Bowl 010",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_010/web/sm_kitchenware_bowl_k01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_010/.thumbs/256x256/sm_kitchenware_bowl_k01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_010"
+    },
+    {
+      "name": "Bowl_011",
+      "displayName": "Bowl 011",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_011/web/sm_kitchenware_bowl_j01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_011/.thumbs/256x256/sm_kitchenware_bowl_j01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_011"
+    },
+    {
+      "name": "Bowl_012",
+      "displayName": "Bowl 012",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_012/web/sm_kitchenware_bowl_i01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_012/.thumbs/256x256/sm_kitchenware_bowl_i01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_012"
+    },
+    {
+      "name": "Bowl_013",
+      "displayName": "Bowl 013",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_013/web/sm_kitchenware_bowl_h01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_013/.thumbs/256x256/sm_kitchenware_bowl_h01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_013"
+    },
+    {
+      "name": "Bowl_014",
+      "displayName": "Bowl 014",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_014/web/sm_kitchenware_bowl_g01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_014/.thumbs/256x256/sm_kitchenware_bowl_g01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_014"
+    },
+    {
+      "name": "Bowl_015",
+      "displayName": "Bowl 015",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_015/web/sm_kitchenware_bowl_f01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_015/.thumbs/256x256/sm_kitchenware_bowl_f01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_015"
+    },
+    {
+      "name": "Bowl_016",
+      "displayName": "Bowl 016",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_016/web/sm_kitchenware_bowl_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_016/.thumbs/256x256/sm_kitchenware_bowl_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_016"
+    },
+    {
+      "name": "Bowl_017",
+      "displayName": "Bowl 017",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_017/web/sm_kitchenware_bowl_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_017/.thumbs/256x256/sm_kitchenware_bowl_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_017"
+    },
+    {
+      "name": "Bowl_018",
+      "displayName": "Bowl 018",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_018/web/sm_kitchenware_bowl_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_018/.thumbs/256x256/sm_kitchenware_bowl_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_018"
+    },
+    {
+      "name": "Bowl_019",
+      "displayName": "Bowl 019",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_019/web/sm_kitchenware_bowl_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_019/.thumbs/256x256/sm_kitchenware_bowl_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Bowl_019"
+    },
+    {
+      "name": "Coffee_Mug",
+      "displayName": "Coffee Mug",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Coffee_Mug/web/sm_rc_dishware_mug_coffee_a01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Coffee_Mug/.thumbs/256x256/sm_rc_dishware_mug_coffee_a01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Coffee_Mug"
+    },
+    {
+      "name": "Paper_Cup",
+      "displayName": "Paper Cup",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Paper_Cup/web/sm_rc_dishware_cup_paper_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Paper_Cup/.thumbs/256x256/sm_rc_dishware_cup_paper_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Paper_Cup"
+    },
+    {
+      "name": "Thermos",
+      "displayName": "Thermos",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Dishware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Thermos/web/rc_dishware_thermous_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Thermos/.thumbs/256x256/rc_dishware_thermous_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Dishware/Thermos"
+    },
+    {
+      "name": "Eyeglasses",
+      "displayName": "Eyeglasses",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Eyeglasses/web/rc_misc_eyeglasses_a01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Eyeglasses/.thumbs/256x256/rc_misc_eyeglasses_a01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Eyeglasses"
+    },
+    {
+      "name": "Apple",
+      "displayName": "Apple",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Apple/web/objaverse_food_produce_apple_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Apple/.thumbs/256x256/objaverse_food_produce_apple_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Apple"
+    },
+    {
+      "name": "Avocado",
+      "displayName": "Avocado",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Avocado/web/objaverse_food_produce_avocado_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Avocado/.thumbs/256x256/objaverse_food_produce_avocado_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Avocado"
+    },
+    {
+      "name": "Bagel",
+      "displayName": "Bagel",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bagel/web/objaverse_food_produce_bagel_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bagel/.thumbs/256x256/objaverse_food_produce_bagel_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bagel"
+    },
+    {
+      "name": "Baguette",
+      "displayName": "Baguette",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Baguette/web/objaverse_food_produce_baguette_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Baguette/.thumbs/256x256/objaverse_food_produce_baguette_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Baguette"
+    },
+    {
+      "name": "Beer_Bottle",
+      "displayName": "Beer Bottle",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle/web/sm_food_beverage_beerBottle_q01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle/.thumbs/256x256/sm_food_beverage_beerBottle_q01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle"
+    },
+    {
+      "name": "Beer_Bottle_002",
+      "displayName": "Beer Bottle 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_002/web/sm_food_beverage_beerBottle_p01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_002/.thumbs/256x256/sm_food_beverage_beerBottle_p01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_002"
+    },
+    {
+      "name": "Beer_Bottle_003",
+      "displayName": "Beer Bottle 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_003/web/sm_food_beverage_beerBottle_o01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_003/.thumbs/256x256/sm_food_beverage_beerBottle_o01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_003"
+    },
+    {
+      "name": "Beer_Bottle_004",
+      "displayName": "Beer Bottle 004",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_004/web/sm_food_beverage_beerBottle_n01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_004/.thumbs/256x256/sm_food_beverage_beerBottle_n01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_004"
+    },
+    {
+      "name": "Beer_Bottle_005",
+      "displayName": "Beer Bottle 005",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_005/web/sm_food_beverage_beerBottle_m01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_005/.thumbs/256x256/sm_food_beverage_beerBottle_m01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_005"
+    },
+    {
+      "name": "Beer_Bottle_006",
+      "displayName": "Beer Bottle 006",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_006/web/sm_food_beverage_beerBottle_k01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_006/.thumbs/256x256/sm_food_beverage_beerBottle_k01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_006"
+    },
+    {
+      "name": "Beer_Bottle_007",
+      "displayName": "Beer Bottle 007",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_007/web/sm_food_beverage_beerBottle_j01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_007/.thumbs/256x256/sm_food_beverage_beerBottle_j01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_007"
+    },
+    {
+      "name": "Beer_Bottle_008",
+      "displayName": "Beer Bottle 008",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_008/web/sm_food_beverage_beerBottle_i01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_008/.thumbs/256x256/sm_food_beverage_beerBottle_i01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_008"
+    },
+    {
+      "name": "Beer_Bottle_009",
+      "displayName": "Beer Bottle 009",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_009/web/sm_food_beverage_beerBottle_h01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_009/.thumbs/256x256/sm_food_beverage_beerBottle_h01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_009"
+    },
+    {
+      "name": "Beer_Bottle_010",
+      "displayName": "Beer Bottle 010",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_010/web/sm_food_beverage_beerBottle_f01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_010/.thumbs/256x256/sm_food_beverage_beerBottle_f01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_010"
+    },
+    {
+      "name": "Beer_Bottle_011",
+      "displayName": "Beer Bottle 011",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_011/web/sm_food_beverage_beerBottle_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_011/.thumbs/256x256/sm_food_beverage_beerBottle_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_011"
+    },
+    {
+      "name": "Beer_Bottle_012",
+      "displayName": "Beer Bottle 012",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_012/web/sm_food_beverage_beerBottle_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_012/.thumbs/256x256/sm_food_beverage_beerBottle_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_012"
+    },
+    {
+      "name": "Beer_Bottle_013",
+      "displayName": "Beer Bottle 013",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_013/web/sm_food_beverage_beerBottle_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_013/.thumbs/256x256/sm_food_beverage_beerBottle_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_013"
+    },
+    {
+      "name": "Beer_Bottle_014",
+      "displayName": "Beer Bottle 014",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_014/web/sm_food_beverage_beerBottle_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_014/.thumbs/256x256/sm_food_beverage_beerBottle_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Beer_Bottle_014"
+    },
+    {
+      "name": "Bottled_Drink",
+      "displayName": "Bottled Drink",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Drink/web/sm_food_beverage_bottledDrink_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Drink/.thumbs/256x256/sm_food_beverage_bottledDrink_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Drink"
+    },
+    {
+      "name": "Bottled_Water",
+      "displayName": "Bottled Water",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water/web/sm_food_beverage_bottledWater_f01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water/.thumbs/256x256/sm_food_beverage_bottledWater_f01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water"
+    },
+    {
+      "name": "Bottled_Water_002",
+      "displayName": "Bottled Water 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water_002/web/sm_food_beverage_bottledWater_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water_002/.thumbs/256x256/sm_food_beverage_bottledWater_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water_002"
+    },
+    {
+      "name": "Bottled_Water_003",
+      "displayName": "Bottled Water 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water_003/web/sm_food_beverage_bottledWater_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water_003/.thumbs/256x256/sm_food_beverage_bottledWater_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Bottled_Water_003"
+    },
+    {
+      "name": "Boxed_Food",
+      "displayName": "Boxed Food",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food/web/sm_food_processed_boxedFood_j01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food/.thumbs/256x256/sm_food_processed_boxedFood_j01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food"
+    },
+    {
+      "name": "Boxed_Food_002",
+      "displayName": "Boxed Food 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_002/web/sm_food_processed_boxedFood_i01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_002/.thumbs/256x256/sm_food_processed_boxedFood_i01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_002"
+    },
+    {
+      "name": "Boxed_Food_003",
+      "displayName": "Boxed Food 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_003/web/sm_food_processed_boxedFood_h01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_003/.thumbs/256x256/sm_food_processed_boxedFood_h01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_003"
+    },
+    {
+      "name": "Boxed_Food_004",
+      "displayName": "Boxed Food 004",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_004/web/sm_food_processed_boxedFood_g01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_004/.thumbs/256x256/sm_food_processed_boxedFood_g01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_004"
+    },
+    {
+      "name": "Boxed_Food_005",
+      "displayName": "Boxed Food 005",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_005/web/sm_food_processed_boxedFood_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_005/.thumbs/256x256/sm_food_processed_boxedFood_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_005"
+    },
+    {
+      "name": "Boxed_Food_006",
+      "displayName": "Boxed Food 006",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_006/web/sm_food_processed_boxedFood_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_006/.thumbs/256x256/sm_food_processed_boxedFood_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_006"
+    },
+    {
+      "name": "Boxed_Food_007",
+      "displayName": "Boxed Food 007",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_007/web/sm_food_processed_boxedFood_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_007/.thumbs/256x256/sm_food_processed_boxedFood_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_007"
+    },
+    {
+      "name": "Boxed_Food_008",
+      "displayName": "Boxed Food 008",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_008/web/sm_food_processed_boxedFood_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_008/.thumbs/256x256/sm_food_processed_boxedFood_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_008"
+    },
+    {
+      "name": "Boxed_Food_009",
+      "displayName": "Boxed Food 009",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_009/web/sm_food_processed_boxedFood_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_009/.thumbs/256x256/sm_food_processed_boxedFood_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Boxed_Food_009"
+    },
+    {
+      "name": "Cake",
+      "displayName": "Cake",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Cake/web/objaverse_food_produce_cake_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Cake/.thumbs/256x256/objaverse_food_produce_cake_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Cake"
+    },
+    {
+      "name": "Cake_Mix",
+      "displayName": "Cake Mix",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Cake_Mix/web/rc_food_packaged_mix_cake_a01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Cake_Mix/.thumbs/256x256/rc_food_packaged_mix_cake_a01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Cake_Mix"
+    },
+    {
+      "name": "Can_of_Soup",
+      "displayName": "Can of Soup",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Can_of_Soup/web/rc_food_canned_soup_a01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Can_of_Soup/.thumbs/256x256/rc_food_canned_soup_a01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Can_of_Soup"
+    },
+    {
+      "name": "Canned_Food",
+      "displayName": "Canned Food",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food/web/sm_food_processed_cannedFood_p01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food/.thumbs/256x256/sm_food_processed_cannedFood_p01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food"
+    },
+    {
+      "name": "Canned_Food_002",
+      "displayName": "Canned Food 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_002/web/sm_food_processed_cannedFood_n01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_002/.thumbs/256x256/sm_food_processed_cannedFood_n01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_002"
+    },
+    {
+      "name": "Canned_Food_003",
+      "displayName": "Canned Food 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_003/web/sm_food_processed_cannedFood_m01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_003/.thumbs/256x256/sm_food_processed_cannedFood_m01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_003"
+    },
+    {
+      "name": "Canned_Food_004",
+      "displayName": "Canned Food 004",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_004/web/sm_food_processed_cannedFood_l01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_004/.thumbs/256x256/sm_food_processed_cannedFood_l01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_004"
+    },
+    {
+      "name": "Canned_Food_005",
+      "displayName": "Canned Food 005",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_005/web/sm_food_processed_cannedFood_k01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_005/.thumbs/256x256/sm_food_processed_cannedFood_k01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_005"
+    },
+    {
+      "name": "Canned_Food_006",
+      "displayName": "Canned Food 006",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_006/web/sm_food_processed_cannedFood_j01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_006/.thumbs/256x256/sm_food_processed_cannedFood_j01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_006"
+    },
+    {
+      "name": "Canned_Food_007",
+      "displayName": "Canned Food 007",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_007/web/sm_food_processed_cannedFood_h01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_007/.thumbs/256x256/sm_food_processed_cannedFood_h01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_007"
+    },
+    {
+      "name": "Canned_Food_008",
+      "displayName": "Canned Food 008",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_008/web/sm_food_processed_cannedFood_f01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_008/.thumbs/256x256/sm_food_processed_cannedFood_f01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_008"
+    },
+    {
+      "name": "Canned_Food_009",
+      "displayName": "Canned Food 009",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_009/web/sm_food_processed_cannedFood_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_009/.thumbs/256x256/sm_food_processed_cannedFood_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_009"
+    },
+    {
+      "name": "Canned_Food_010",
+      "displayName": "Canned Food 010",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_010/web/sm_food_processed_cannedFood_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_010/.thumbs/256x256/sm_food_processed_cannedFood_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_010"
+    },
+    {
+      "name": "Canned_Food_011",
+      "displayName": "Canned Food 011",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_011/web/sm_food_processed_cannedFood_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_011/.thumbs/256x256/sm_food_processed_cannedFood_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_011"
+    },
+    {
+      "name": "Canned_Food_012",
+      "displayName": "Canned Food 012",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_012/web/sm_food_processed_cannedFood_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_012/.thumbs/256x256/sm_food_processed_cannedFood_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Canned_Food_012"
+    },
+    {
+      "name": "Champagne_Bottle",
+      "displayName": "Champagne Bottle",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Champagne_Bottle/web/sm_food_beverage_champagneBottle_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Champagne_Bottle/.thumbs/256x256/sm_food_beverage_champagneBottle_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Champagne_Bottle"
+    },
+    {
+      "name": "Chocolate",
+      "displayName": "Chocolate",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Chocolate/web/objaverse_food_produce_chocolate_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Chocolate/.thumbs/256x256/objaverse_food_produce_chocolate_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Chocolate"
+    },
+    {
+      "name": "Fresh_Orange",
+      "displayName": "Fresh Orange",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Fresh_Orange/web/sm_food_produce_freshOrange_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Fresh_Orange/.thumbs/256x256/sm_food_produce_freshOrange_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Fresh_Orange"
+    },
+    {
+      "name": "Garlic",
+      "displayName": "Garlic",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Garlic/web/objaverse_food_produce_garlic_v01_00.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Garlic/.thumbs/256x256/objaverse_food_produce_garlic_v01_00.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Garlic"
+    },
+    {
+      "name": "Gin_Bottle",
+      "displayName": "Gin Bottle",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle/web/sm_food_beverage_ginBottle_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle/.thumbs/256x256/sm_food_beverage_ginBottle_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle"
+    },
+    {
+      "name": "Gin_Bottle_002",
+      "displayName": "Gin Bottle 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle_002/web/sm_food_beverage_ginBottle_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle_002/.thumbs/256x256/sm_food_beverage_ginBottle_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle_002"
+    },
+    {
+      "name": "Gin_Bottle_003",
+      "displayName": "Gin Bottle 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle_003/web/sm_food_beverage_ginBottle_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle_003/.thumbs/256x256/sm_food_beverage_ginBottle_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Gin_Bottle_003"
+    },
+    {
+      "name": "Juice_Box",
+      "displayName": "Juice Box",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box/web/sm_food_beverage_boxedDrink_g01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box/.thumbs/256x256/sm_food_beverage_boxedDrink_g01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box"
+    },
+    {
+      "name": "Juice_Box_002",
+      "displayName": "Juice Box 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_002/web/sm_food_beverage_boxedDrink_f01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_002/.thumbs/256x256/sm_food_beverage_boxedDrink_f01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_002"
+    },
+    {
+      "name": "Juice_Box_003",
+      "displayName": "Juice Box 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_003/web/sm_food_beverage_boxedDrink_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_003/.thumbs/256x256/sm_food_beverage_boxedDrink_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_003"
+    },
+    {
+      "name": "Juice_Box_004",
+      "displayName": "Juice Box 004",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_004/web/sm_food_beverage_boxedDrink_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_004/.thumbs/256x256/sm_food_beverage_boxedDrink_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_004"
+    },
+    {
+      "name": "Juice_Box_005",
+      "displayName": "Juice Box 005",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_005/web/sm_food_beverage_boxedDrink_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_005/.thumbs/256x256/sm_food_beverage_boxedDrink_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_005"
+    },
+    {
+      "name": "Juice_Box_006",
+      "displayName": "Juice Box 006",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_006/web/sm_food_beverage_boxedDrink_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_006/.thumbs/256x256/sm_food_beverage_boxedDrink_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_006"
+    },
+    {
+      "name": "Juice_Box_007",
+      "displayName": "Juice Box 007",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_007/web/sm_food_beverage_boxedDrink_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_007/.thumbs/256x256/sm_food_beverage_boxedDrink_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Juice_Box_007"
+    },
+    {
+      "name": "Soda_Can",
+      "displayName": "Soda Can",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can/web/sm_food_beverage_can_n01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can/.thumbs/256x256/sm_food_beverage_can_n01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can"
+    },
+    {
+      "name": "Soda_Can_002",
+      "displayName": "Soda Can 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_002/web/sm_food_beverage_can_m01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_002/.thumbs/256x256/sm_food_beverage_can_m01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_002"
+    },
+    {
+      "name": "Soda_Can_003",
+      "displayName": "Soda Can 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_003/web/sm_food_beverage_can_l01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_003/.thumbs/256x256/sm_food_beverage_can_l01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_003"
+    },
+    {
+      "name": "Soda_Can_004",
+      "displayName": "Soda Can 004",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_004/web/sm_food_beverage_can_k01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_004/.thumbs/256x256/sm_food_beverage_can_k01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_004"
+    },
+    {
+      "name": "Soda_Can_005",
+      "displayName": "Soda Can 005",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_005/web/sm_food_beverage_can_j01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_005/.thumbs/256x256/sm_food_beverage_can_j01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_005"
+    },
+    {
+      "name": "Soda_Can_006",
+      "displayName": "Soda Can 006",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_006/web/sm_food_beverage_can_i01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_006/.thumbs/256x256/sm_food_beverage_can_i01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_006"
+    },
+    {
+      "name": "Soda_Can_007",
+      "displayName": "Soda Can 007",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_007/web/sm_food_beverage_can_h01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_007/.thumbs/256x256/sm_food_beverage_can_h01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_007"
+    },
+    {
+      "name": "Soda_Can_008",
+      "displayName": "Soda Can 008",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_008/web/sm_food_beverage_can_g01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_008/.thumbs/256x256/sm_food_beverage_can_g01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_008"
+    },
+    {
+      "name": "Soda_Can_009",
+      "displayName": "Soda Can 009",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_009/web/sm_food_beverage_can_e01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_009/.thumbs/256x256/sm_food_beverage_can_e01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_009"
+    },
+    {
+      "name": "Soda_Can_010",
+      "displayName": "Soda Can 010",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_010/web/sm_food_beverage_can_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_010/.thumbs/256x256/sm_food_beverage_can_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_010"
+    },
+    {
+      "name": "Soda_Can_011",
+      "displayName": "Soda Can 011",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_011/web/sm_food_beverage_can_c01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_011/.thumbs/256x256/sm_food_beverage_can_c01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_011"
+    },
+    {
+      "name": "Soda_Can_012",
+      "displayName": "Soda Can 012",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_012/web/sm_food_beverage_can_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_012/.thumbs/256x256/sm_food_beverage_can_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Soda_Can_012"
+    },
+    {
+      "name": "Tequila_Bottle",
+      "displayName": "Tequila Bottle",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Tequila_Bottle/web/sm_food_beverage_tequilaBottle_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Tequila_Bottle/.thumbs/256x256/sm_food_beverage_tequilaBottle_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Tequila_Bottle"
+    },
+    {
+      "name": "Vodka_Bottle",
+      "displayName": "Vodka Bottle",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Vodka_Bottle/web/sm_food_beverage_vodkaBottle_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Vodka_Bottle/.thumbs/256x256/sm_food_beverage_vodkaBottle_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Vodka_Bottle"
+    },
+    {
+      "name": "Vodka_Bottle_002",
+      "displayName": "Vodka Bottle 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Vodka_Bottle_002/web/sm_food_beverage_vodkaBottle_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Vodka_Bottle_002/.thumbs/256x256/sm_food_beverage_vodkaBottle_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Vodka_Bottle_002"
+    },
+    {
+      "name": "Whiskey_Bottle",
+      "displayName": "Whiskey Bottle",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle/web/sm_food_beverage_whiskyBottle_d01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle/.thumbs/256x256/sm_food_beverage_whiskyBottle_d01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle"
+    },
+    {
+      "name": "Whiskey_Bottle_002",
+      "displayName": "Whiskey Bottle 002",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle_002/web/sm_food_beverage_whiskyBottle_b01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle_002/.thumbs/256x256/sm_food_beverage_whiskyBottle_b01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle_002"
+    },
+    {
+      "name": "Whiskey_Bottle_003",
+      "displayName": "Whiskey Bottle 003",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle_003/web/sm_food_beverage_whiskyBottle_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle_003/.thumbs/256x256/sm_food_beverage_whiskyBottle_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Whiskey_Bottle_003"
+    },
+    {
+      "name": "Zucchini",
+      "displayName": "Zucchini",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Food_Items",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Zucchini/web/rc_food_produce_zucchini_a01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Zucchini/.thumbs/256x256/rc_food_produce_zucchini_a01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Food_Items/Zucchini"
+    },
+    {
+      "name": "Golf_Ball",
+      "displayName": "Golf Ball",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Golf_Ball/web/rc_misc_golfBall_a.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Golf_Ball/.thumbs/256x256/rc_misc_golfBall_a.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Golf_Ball"
+    },
+    {
+      "name": "Ping_Pong_Ball",
+      "displayName": "Ping Pong Ball",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Ping_Pong_Ball/web/rc_misc_toy_pongpaddle_ball_a01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Ping_Pong_Ball/.thumbs/256x256/rc_misc_toy_pongpaddle_ball_a01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Ping_Pong_Ball"
+    },
+    {
+      "name": "Wooden_Slotted_Spoon",
+      "displayName": "Wooden Slotted Spoon",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Utensils",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Utensils/Wooden_Slotted_Spoon/web/rc_utensil_spoon_slotted_wooden_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Utensils/Wooden_Slotted_Spoon/.thumbs/256x256/rc_utensil_spoon_slotted_wooden_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Utensils/Wooden_Slotted_Spoon"
+    },
+    {
+      "name": "Wooden_Spoon",
+      "displayName": "Wooden Spoon",
+      "category": "Residential",
+      "subCategory": "Furnishing/Kitchen/Kitchenware/Utensils",
+      "glbPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Utensils/Wooden_Spoon/web/rc_utensil_spoon_wooden_a01_01.glb",
+      "thumbnailPath": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Utensils/Wooden_Spoon/.thumbs/256x256/rc_utensil_spoon_wooden_a01_01.usd.png",
+      "assetDir": "Assets/Isaac/6.0/Isaac/SimReady/Residential/Furnishing/Kitchen/Kitchenware/Utensils/Wooden_Spoon"
+    }
+  ]
+}

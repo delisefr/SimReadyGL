@@ -85,9 +85,13 @@
     <!-- Asset browser panel -->
     <div id="asset-browser" class="hidden">
       <div class="panel-header">
-        <h2>SimReady Assets</h2>
+        <h2>Assets</h2>
         <input type="text" id="asset-search" placeholder="Search assets..." autocomplete="off" />
         <button id="btn-close-browser" class="close-btn">&times;</button>
+      </div>
+      <div id="repo-tabs">
+        <button class="repo-tab active" data-repo="simready">SimReady <span class="repo-count">6,397</span></button>
+        <button class="repo-tab" data-repo="isaac">Isaac 6.0 <span class="repo-count">237</span></button>
       </div>
       <div id="asset-categories"></div>
       <div id="asset-grid"></div>
