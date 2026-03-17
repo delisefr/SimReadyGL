@@ -811,32 +811,68 @@ class USDComposer {
 			const composedGroup = composer.compose( referencedData, this.assets, mergedVariants, newBasePath );
 
 			// If a primPath is specified, find and return just that subtree
-			if ( primPath ) {
+			if ( primPath && composedGroup ) {
 
-				const primName = primPath.split( '/' ).pop();
+				// Walk the path segments to find the target deep in the hierarchy
+				// e.g., "/a1/FL_calf/visuals" → ["a1", "FL_calf", "visuals"]
+				const segments = primPath.split( '/' ).filter( s => s.length > 0 );
+				let targetObject = composedGroup;
 
-				// Find the direct child with this name (not a deep search)
-				// This is important because there may be multiple objects with the same name
-				let targetObject = null;
-				for ( const child of composedGroup.children ) {
+				for ( const segment of segments ) {
 
-					if ( child.name === primName ) {
+					let found = null;
+					for ( const child of targetObject.children ) {
 
-						targetObject = child;
+						if ( child.name === segment ) {
+
+							found = child;
+							break;
+
+						}
+
+					}
+
+					if ( ! found ) {
+
+						targetObject = null;
 						break;
 
 					}
 
+					targetObject = found;
+
 				}
 
-				if ( targetObject ) {
+				if ( targetObject && targetObject !== composedGroup ) {
 
 					// Detach from parent for re-parenting
-					composedGroup.remove( targetObject );
+					targetObject.parent?.remove( targetObject );
 
 					// Wrap in a group to maintain consistent return type
 					const wrapper = new Group();
 					wrapper.add( targetObject );
+					return wrapper;
+
+				}
+
+				// Fallback: try searching by last segment name anywhere
+				const primName = segments[ segments.length - 1 ];
+				let fallback = null;
+				composedGroup.traverse( child => {
+
+					if ( ! fallback && child.name === primName && child !== composedGroup ) {
+
+						fallback = child;
+
+					}
+
+				} );
+
+				if ( fallback ) {
+
+					fallback.parent?.remove( fallback );
+					const wrapper = new Group();
+					wrapper.add( fallback );
 					return wrapper;
 
 				}
@@ -961,7 +997,13 @@ class USDComposer {
 
 			const ref = spec.fields.references[ 0 ];
 			if ( typeof ref === 'string' ) return ref;
-			if ( ref.assetPath ) return '@' + ref.assetPath + '@';
+			if ( ref.assetPath ) {
+
+				let result = '@' + ref.assetPath + '@';
+				if ( ref.primPath ) result += '<' + ref.primPath + '>';
+				return result;
+
+			}
 
 		}
 
@@ -974,11 +1016,23 @@ class USDComposer {
 
 				const p = payload[ 0 ];
 				if ( typeof p === 'string' ) return p;
-				if ( p.assetPath ) return '@' + p.assetPath + '@';
+				if ( p.assetPath ) {
+
+					let result = '@' + p.assetPath + '@';
+					if ( p.primPath ) result += '<' + p.primPath + '>';
+					return result;
+
+				}
 
 			}
 
-			if ( payload.assetPath ) return '@' + payload.assetPath + '@';
+			if ( payload.assetPath ) {
+
+				let result = '@' + payload.assetPath + '@';
+				if ( payload.primPath ) result += '<' + payload.primPath + '>';
+				return result;
+
+			}
 
 		}
 
