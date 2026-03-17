@@ -99,6 +99,10 @@ class App {
     this.ui.showLoading(`Loading ${item.displayName}...`);
     this.ui.hideTextureProgress();
 
+    // Clear stale state from previous loads
+    this.loader.materialMapper.resetTextureProgress();
+    this.loader.materialMapper.textureBaseUrl = null;
+
     try {
       if (item.format === 'glb' && item.glbPath) {
         // GLB: load directly with GLTFLoader
@@ -154,6 +158,7 @@ class App {
       this.ui.showError(`Failed to load: ${err.message}`);
     } finally {
       this.ui.hideLoading();
+      this.loader.materialMapper.textureBaseUrl = null;
     }
   }
 

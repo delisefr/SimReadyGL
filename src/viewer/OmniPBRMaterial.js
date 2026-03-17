@@ -24,6 +24,8 @@ export class OmniPBRMaterialMapper {
     this.textureTotal = 0;
     this.textureLoaded = 0;
     this.textureFailed = 0;
+    this.textureCache.clear();
+    this.pendingLoads.clear();
   }
 
   _reportProgress() {

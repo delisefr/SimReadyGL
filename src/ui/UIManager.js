@@ -214,10 +214,30 @@ export class UIManager {
   }
 
   showError(message) {
-    this.loadingText.textContent = message;
-    this.loadingDetail.textContent = '';
-    this.progressFill.style.width = '0%';
-    setTimeout(() => this.hideLoading(), 3000);
+    this.hideLoading();
+    this.showToast(message, 'error');
+  }
+
+  showToast(message, type = 'info') {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'toast-container';
+      document.getElementById('app').appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    // Trigger entrance animation
+    requestAnimationFrame(() => toast.classList.add('show'));
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+      toast.addEventListener('transitionend', () => toast.remove());
+    }, 5000);
   }
 
   setAssetName(name) {
