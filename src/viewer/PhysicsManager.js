@@ -153,25 +153,79 @@ export class PhysicsManager {
 
     if (size.length() < 0.001) return;
 
-    const halfExtents = { x: size.x / 2, y: size.y / 2, z: size.z / 2 };
-
-    // Reasonable mass: ~10 kg/m^3 (light props), clamped to sensible range
-    const volume = size.x * size.y * size.z;
-    const mass = Math.max(0.5, Math.min(50, volume * 10));
-
     // Get the world-space offset from root's world position to bbox center
     const rootWorldPos = new THREE.Vector3();
     root.getWorldPosition(rootWorldPos);
     const offset = center.clone().sub(rootWorldPos);
 
-    const body = this.engine.createBoxBody(
-      halfExtents,
-      { x: center.x, y: center.y, z: center.z },
-      null,
-      mass
-    );
+    // Default density for SimReady props (cardboard, plastic, wood)
+    const density = 200; // kg/m^3
+
+    let body;
+
+    // Try convex hull from mesh vertices (PhysX native behavior)
+    if (this.engine.name === 'PhysX') {
+      const vertices = this._collectWorldVertices(meshes);
+      if (vertices && vertices.length >= 12) { // At least 4 vertices
+        body = this.engine.createConvexBody(
+          vertices,
+          { x: center.x, y: center.y, z: center.z },
+          null,
+          density
+        );
+      }
+    }
+
+    // Fallback to box body
+    if (!body) {
+      const halfExtents = { x: size.x / 2, y: size.y / 2, z: size.z / 2 };
+      const volume = size.x * size.y * size.z;
+      const mass = Math.max(0.5, Math.min(50, volume * 10));
+      body = this.engine.createBoxBody(halfExtents, { x: center.x, y: center.y, z: center.z }, null, mass);
+    }
 
     this.bodies.push({ body, root, meshes, offset, center: center.clone() });
+  }
+
+  /**
+   * Collect world-space vertices from meshes, centered at origin for convex hull.
+   * Subsamples to max 256 vertices for cooking performance.
+   */
+  _collectWorldVertices(meshes) {
+    const allVerts = [];
+    const worldPos = new THREE.Vector3();
+
+    for (const mesh of meshes) {
+      const geo = mesh.geometry;
+      if (!geo) continue;
+      const pos = geo.getAttribute('position');
+      if (!pos) continue;
+
+      mesh.updateWorldMatrix(true, false);
+      const mat = mesh.matrixWorld;
+
+      for (let i = 0; i < pos.count; i++) {
+        worldPos.set(pos.getX(i), pos.getY(i), pos.getZ(i));
+        worldPos.applyMatrix4(mat);
+        allVerts.push(worldPos.x, worldPos.y, worldPos.z);
+      }
+    }
+
+    if (allVerts.length === 0) return null;
+
+    // Subsample if too many vertices (convex hull cooking is O(n log n))
+    const maxVerts = 256;
+    const totalVerts = allVerts.length / 3;
+    if (totalVerts > maxVerts) {
+      const step = Math.ceil(totalVerts / maxVerts);
+      const sampled = [];
+      for (let i = 0; i < totalVerts; i += step) {
+        sampled.push(allVerts[i * 3], allVerts[i * 3 + 1], allVerts[i * 3 + 2]);
+      }
+      return new Float32Array(sampled);
+    }
+
+    return new Float32Array(allVerts);
   }
 
   _saveState() {

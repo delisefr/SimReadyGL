@@ -33,6 +33,32 @@ export class PhysicsEngine {
    */
   createBoxBody(halfExtents, position, quaternion, mass) { throw new Error('Not implemented'); }
 
+  /**
+   * Create a dynamic body with convex hull collider. Falls back to box if not supported.
+   * @param {Float32Array} vertices - Flat array of vertex positions [x,y,z,...]
+   * @param {Object} position - {x, y, z}
+   * @param {Object} quaternion - {x, y, z, w}
+   * @param {number} density - kg/m^3
+   * @returns engine-specific body handle
+   */
+  createConvexBody(vertices, position, quaternion, density) {
+    // Default: fall back to box
+    let minX = Infinity, minY = Infinity, minZ = Infinity;
+    let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+    for (let i = 0; i < vertices.length; i += 3) {
+      minX = Math.min(minX, vertices[i]); maxX = Math.max(maxX, vertices[i]);
+      minY = Math.min(minY, vertices[i+1]); maxY = Math.max(maxY, vertices[i+1]);
+      minZ = Math.min(minZ, vertices[i+2]); maxZ = Math.max(maxZ, vertices[i+2]);
+    }
+    const hx = (maxX - minX) / 2, hy = (maxY - minY) / 2, hz = (maxZ - minZ) / 2;
+    const vol = hx * hy * hz * 8;
+    const mass = density * Math.max(vol, 0.001);
+    return this.createBoxBody(
+      { x: Math.max(hx, 0.01), y: Math.max(hy, 0.01), z: Math.max(hz, 0.01) },
+      position, quaternion, mass
+    );
+  }
+
   /** Step the simulation by dt seconds. */
   step(dt) { throw new Error('Not implemented'); }
 

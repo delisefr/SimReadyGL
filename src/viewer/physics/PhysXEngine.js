@@ -163,6 +163,66 @@ export class PhysXEngine extends PhysicsEngine {
     return body;
   }
 
+  /**
+   * Create a dynamic body with a convex hull collider from mesh vertices.
+   * This mirrors how PhysX in Omniverse auto-generates collision from mesh geometry.
+   */
+  createConvexBody(vertices, position, quaternion, density) {
+    const px = this.px;
+
+    const q = quaternion
+      ? new px.PxQuat(quaternion.x, quaternion.y, quaternion.z, quaternion.w)
+      : new px.PxQuat(px.PxIDENTITYEnum.PxIdentity);
+
+    const pose = new px.PxTransform(
+      new px.PxVec3(position.x, position.y, position.z), q
+    );
+
+    // Build PxConvexMeshDesc from vertices
+    const desc = new px.PxConvexMeshDesc();
+    desc.flags = new px.PxConvexFlags(px.PxConvexFlagEnum.eCOMPUTE_CONVEX);
+
+    // Fill vertex buffer
+    const pointsBuffer = new px.PxArray_PxVec3(vertices.length / 3);
+    for (let i = 0; i < vertices.length; i += 3) {
+      pointsBuffer.set(i / 3, new px.PxVec3(vertices[i], vertices[i + 1], vertices[i + 2]));
+    }
+    desc.points.count = vertices.length / 3;
+    desc.points.data = pointsBuffer.begin();
+    desc.points.stride = 12; // sizeof(PxVec3)
+
+    // Cook convex mesh
+    const cookingParams = new px.PxCookingParams(this.toleranceScale);
+    const convexMesh = px.CreateConvexMesh(cookingParams, desc);
+
+    if (!convexMesh) {
+      // Fallback to box if convex cooking fails
+      console.warn('[PhysX] Convex cooking failed, falling back to box');
+      // Compute bbox from vertices
+      let minX = Infinity, minY = Infinity, minZ = Infinity;
+      let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+      for (let i = 0; i < vertices.length; i += 3) {
+        minX = Math.min(minX, vertices[i]); maxX = Math.max(maxX, vertices[i]);
+        minY = Math.min(minY, vertices[i+1]); maxY = Math.max(maxY, vertices[i+1]);
+        minZ = Math.min(minZ, vertices[i+2]); maxZ = Math.max(maxZ, vertices[i+2]);
+      }
+      const hx = (maxX - minX) / 2, hy = (maxY - minY) / 2, hz = (maxZ - minZ) / 2;
+      const vol = hx * hy * hz * 8;
+      return this.createBoxBody(
+        { x: Math.max(hx, 0.01), y: Math.max(hy, 0.01), z: Math.max(hz, 0.01) },
+        position, quaternion, density * Math.max(vol, 0.001)
+      );
+    }
+
+    const convexGeom = new px.PxConvexMeshGeometry(convexMesh);
+    const body = px.CreateDynamic(this.physics, pose, convexGeom, this.material, density);
+    body.setLinearDamping(0.1);
+    body.setAngularDamping(0.3);
+
+    this.scene.addActor(body);
+    return body;
+  }
+
   step(dt) {
     this.scene.simulate(dt);
     this.scene.fetchResults(true);
