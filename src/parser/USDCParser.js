@@ -534,8 +534,18 @@ class USDCParser {
 			const path = this.paths[ spec.pathIndex ];
 			if ( ! path ) continue;
 
-			const fields = this._getFieldsForSpec( spec );
-			this.specsByPath[ path ] = { specType: spec.specType, fields };
+			try {
+
+				const fields = this._getFieldsForSpec( spec );
+				this.specsByPath[ path ] = { specType: spec.specType, fields };
+
+			} catch ( e ) {
+
+				// Skip specs that fail to parse (e.g., unsupported types)
+				// but continue parsing remaining specs
+				continue;
+
+			}
 
 		}
 
@@ -1704,7 +1714,6 @@ class USDCParser {
 			}
 
 			default:
-				console.warn( 'USDCParser: Unsupported scalar type', type );
 				return null;
 
 		}
@@ -1855,7 +1864,6 @@ class USDCParser {
 			}
 
 			default:
-				console.warn( 'USDCParser: Unsupported array type', type );
 				return [];
 
 		}
